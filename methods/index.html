@@ -1071,6 +1071,7 @@
         relation.type === 'follows_method' ? (outgoing ? 'Follows the method of' : 'Method followed by') :
         relation.type === 'cites' ? (outgoing ? 'Cites' : 'Cited by') :
         relation.type === 'uses_data' ? (outgoing ? 'Uses data from' : 'Data used by') :
+        relation.type === 'uses_derived_parameter' ? (outgoing ? 'Uses a derived parameter from' : 'Derived parameter used by') :
         relation.type.replace(/_/g, ' ');
       function renderExplorer() {
         explorerResults.replaceChildren();
