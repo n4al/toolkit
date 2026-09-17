@@ -213,6 +213,20 @@
     .approach-card:nth-child(2) { --accent:#286d83; --tint:#e0f0f4; }
     .approach-card:nth-child(3) { --accent:#735294; --tint:#eee6f5; }
     .approach-card:nth-child(4) { --accent:#327247; --tint:#e5f1e7; }
+    /* Catalogue uses full-width rows so expansion never leaves a blank grid cell. */
+    #publication-cards { display:grid; grid-template-columns:minmax(0,1fr); gap:14px; }
+    .publication-card { --approach:#655c51; --approach-bg:#f0ebe3; border-left:5px solid var(--approach); }
+    .publication-card[data-approach="ecological-accounting"] { --approach:#276e50; --approach-bg:#e3f1e7; }
+    .publication-card[data-approach="needs-based-development-analysis"] { --approach:#375f9b; --approach-bg:#e6edf9; }
+    .publication-card .method-label { background:var(--approach-bg); color:var(--approach); letter-spacing:.035em; }
+    .method-profile { display:grid; gap:12px; margin:20px 0; }
+    .profile-level { padding:12px 16px; background:#fff; border-left:5px solid var(--level); border-radius:3px; }
+    .profile-level strong { display:block; color:var(--level); font-size:.78rem; text-transform:uppercase; letter-spacing:.055em; margin-bottom:5px; }
+    .profile-level p { margin:0; }
+    .profile-level:nth-child(1) { --level:#315d85; }
+    .profile-level:nth-child(2) { --level:#72529a; }
+    .profile-level:nth-child(3) { --level:#287568; }
+    .profile-level:nth-child(4) { --level:#a35b24; }
     /* Publication cards remain compact until readers choose to open them. */
     .publication-card { padding:0; overflow:hidden; align-self:start; }
     .publication-card details { height:100%; }
@@ -1168,6 +1182,7 @@
         cards.replaceChildren();
         for (const item of filtered) {
           const article = el('article', 'method-card publication-card');
+          article.dataset.approach = (item.category || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
           const details = el('details');
           const summary = el('summary');
           summary.append(el('span', 'method-label', item.category || 'Research study'));
@@ -1176,6 +1191,22 @@
           details.append(summary);
           const body = el('div', 'publication-detail');
           if (item.summary) body.append(el('p', '', item.summary));
+          if (item.levels) {
+            const profile = el('div', 'method-profile');
+            const fields = [
+              ['mechanism', '01 / Theoretical mechanism'],
+              ['strategy', '02 / Estimation strategy'],
+              ['technique', '03 / Computational technique'],
+              ['output', '04 / Measured quantities']
+            ];
+            for (const [key, label] of fields) {
+              const section = el('section', 'profile-level');
+              section.append(el('strong', '', label));
+              section.append(el('p', '', item.levels[key] || 'Not yet documented.'));
+              profile.append(section);
+            }
+            body.append(profile);
+          }
           body.append(el('p', 'methods-small', `Verification: ${item.status || 'Not specified'}`));
           const link = el('a', '', 'Read method entry →');
           link.href = item.path;
