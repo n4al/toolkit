@@ -165,6 +165,11 @@
       font-size: 0.88rem;
     }
 
+    .methods-cta { display:inline-block; padding:12px 18px; background:#9d302a; color:#fff; font-weight:700; text-decoration:none; }
+    .methods-cta:hover, .methods-cta:focus-visible { background:#75231f; color:#fff; }
+    .pipeline-details { border:1px solid #cfc6b8; padding:16px 22px; background:#fffdf8; margin:24px 0; }
+    .pipeline-details summary { cursor:pointer; font-weight:700; padding:5px 0; }
+    .pipeline-details .catalogue-entry { margin:14px 0; }
     @media (max-width: 760px) {
       .methods-grid {
         grid-template-columns: 1fr;
@@ -231,6 +236,8 @@
             evidence of a particular mechanism.
           </p>
 
+          <p><a class="methods-cta" href="#catalogue">Browse published studies ↓</a></p>
+
           <div class="methods-note">
 
             <strong>Purpose of the library</strong>
@@ -255,12 +262,44 @@
     </section>
 
 
+    <!-- CATALOGUE -->
+
+    <section id="catalogue">
+      <div class="container">
+
+        <p class="methods-kicker">01 / Explore the library</p>
+
+        <h2>Explore published studies</h2>
+
+        <p>
+          Browse publication-specific method documentation and inspect the
+          evidence and verification status of each entry. New records
+          added to the catalogue appear here automatically.
+        </p>
+
+
+
+        <div class="catalogue-controls" aria-label="Filter publication entries">
+          <label for="publication-search">Search published studies</label>
+          <input id="publication-search" type="search" placeholder="Search author, title or technique…">
+          <label for="publication-category">Research approach</label>
+          <select id="publication-category"><option value="">All approaches</option></select>
+        </div>
+        <p id="publication-message" class="methods-small" role="status" aria-live="polite">Loading publication entries…</p>
+        <div id="publication-cards" class="methods-grid" aria-label="Publication entries"></div>
+        <noscript><p><a href="dorninger/">Dorninger et al. (2021): Global patterns of ecologically unequal exchange</a> — partial independent reconstruction, verification ongoing.</p></noscript>
+      </div>
+    </section>
+
+    <hr class="methods-divider">
+
+
     <!-- FOUR ANALYTICAL LEVELS -->
 
     <section>
       <div class="container">
 
-        <p class="methods-kicker">01 / Methodological foundations</p>
+        <p class="methods-kicker">02 / Methodological foundations</p>
 
         <h2>Four levels of analysis</h2>
 
@@ -386,7 +425,7 @@
     <section id="approaches">
       <div class="container">
 
-        <p class="methods-kicker">02 / Research approaches</p>
+        <p class="methods-kicker">03 / Research approaches</p>
 
         <h2>Mapping the field</h2>
 
@@ -545,7 +584,7 @@
     <section>
       <div class="container">
 
-        <p class="methods-kicker">03 / Interpretation</p>
+        <p class="methods-kicker">04 / Interpretation</p>
 
         <h2>What makes two estimates comparable?</h2>
 
@@ -677,161 +716,6 @@
     <hr class="methods-divider">
 
 
-    <!-- CATALOGUE -->
-
-    <section id="catalogue">
-      <div class="container">
-
-        <p class="methods-kicker">04 / Catalogue</p>
-
-        <h2>Publication-specific entries</h2>
-
-        <p>
-          The library will document individual published
-          methods and formulations. Each completed entry
-          will identify its source, explain its calculations
-          and distinguish the authors' claims from
-          the Toolkit's analysis.
-        </p>
-
-        <p>
-          Entries marked as proposed have not yet been
-          completed or independently verified.
-        </p>
-
-
-        <div class="catalogue-controls" aria-label="Filter publication entries">
-          <label for="publication-search">Search published studies</label>
-          <input id="publication-search" type="search" placeholder="Search author, title or technique…">
-          <label for="publication-category">Research approach</label>
-          <select id="publication-category"><option value="">All approaches</option></select>
-        </div>
-        <p id="publication-message" class="methods-small" role="status" aria-live="polite">Loading publication entries…</p>
-        <div id="publication-cards" class="methods-grid" aria-label="Publication entries"></div>
-        <noscript><p><a href="dorninger/">Dorninger et al. (2021): Global patterns of ecologically unequal exchange</a> — partial independent reconstruction, verification ongoing.</p></noscript>
-        <h3>Documentation framework and proposed entries</h3>
-
-        <article class="catalogue-entry">
-
-          <span class="status status-framework">
-            Framework available
-          </span>
-
-          <h3>Method documentation standard</h3>
-
-          <p>
-            The common structure used to document
-            publication details, theory, estimation,
-            data, calculation procedures, limitations
-            and replication status.
-          </p>
-
-          <a href="#documentation-standard">
-            View the documentation standard →
-          </a>
-
-        </article>
-
-
-        <article class="catalogue-entry">
-
-          <span class="status status-planned">
-            Proposed entry
-          </span>
-
-          <h3>Köhler's unequal-exchange research</h3>
-
-          <p>
-            A publication-specific review is proposed.
-            The relevant publication and formulation
-            will be identified before documenting
-            its theoretical assumptions, calculations,
-            data requirements and outputs.
-          </p>
-
-          <p class="methods-small">
-            No calculation, replication or independent
-            verification is claimed.
-          </p>
-
-        </article>
-
-
-        <article class="catalogue-entry">
-
-          <span class="status status-planned">
-            Proposed entry
-          </span>
-
-          <h3>Wage-based counterfactual valuation</h3>
-
-          <p>
-            A future entry will document a specific
-            empirical study, identifying the wage
-            comparisons, valuation assumptions and
-            calculation procedure it actually uses.
-          </p>
-
-          <p class="methods-small">
-            The original publication and formulation
-            have not yet been selected.
-          </p>
-
-        </article>
-
-
-        <article class="catalogue-entry">
-
-          <span class="status status-planned">
-            Proposed entry
-          </span>
-
-          <h3>MRIO-based unequal-exchange estimation</h3>
-
-          <p>
-            A future entry will document a specific
-            published implementation, including
-            its input–output model, extensions,
-            data, measured flows and any
-            additional valuation procedure.
-          </p>
-
-          <p class="methods-small">
-            The original publication and formulation
-            have not yet been selected.
-          </p>
-
-        </article>
-
-
-        <article class="catalogue-entry">
-
-          <span class="status status-planned">
-            Proposed entry
-          </span>
-
-          <h3>Ecological-flow accounting and valuation</h3>
-
-          <p>
-            A future entry will document a specific
-            published study, identifying its
-            resource categories, units, accounting
-            boundaries and interpretation.
-          </p>
-
-          <p class="methods-small">
-            The original publication and formulation
-            have not yet been selected.
-          </p>
-
-        </article>
-
-      </div>
-    </section>
-
-    <hr class="methods-divider">
-
-
     <!-- DOCUMENTATION STANDARD -->
 
     <section id="documentation-standard">
@@ -847,6 +731,7 @@
           identified rather than silently supplied.
         </p>
 
+        <p class="methods-small">The <a href="#documentation-standard">documentation standard</a> governs all publication entries; it is not itself a published study.</p>
         <ol class="methods-steps">
 
           <li>
@@ -950,12 +835,121 @@
     <hr class="methods-divider">
 
 
+    <!-- RESEARCH PIPELINE -->
+    <section id="pipeline">
+      <div class="container">
+        <p class="methods-kicker">06 / Research pipeline</p>
+        <h2>Planned method entries</h2>
+        <p>These are topics for future documentation, not published Toolkit analyses or verified replications.</p>
+        <details class="pipeline-details">
+          <summary>View planned entries</summary>
+
+
+
+        <article class="catalogue-entry">
+
+          <span class="status status-planned">
+            Proposed entry
+          </span>
+
+          <h3>Köhler's unequal-exchange research</h3>
+
+          <p>
+            A publication-specific review is proposed.
+            The relevant publication and formulation
+            will be identified before documenting
+            its theoretical assumptions, calculations,
+            data requirements and outputs.
+          </p>
+
+          <p class="methods-small">
+            No calculation, replication or independent
+            verification is claimed.
+          </p>
+
+        </article>
+
+
+        <article class="catalogue-entry">
+
+          <span class="status status-planned">
+            Proposed entry
+          </span>
+
+          <h3>Wage-based counterfactual valuation</h3>
+
+          <p>
+            A future entry will document a specific
+            empirical study, identifying the wage
+            comparisons, valuation assumptions and
+            calculation procedure it actually uses.
+          </p>
+
+          <p class="methods-small">
+            The original publication and formulation
+            have not yet been selected.
+          </p>
+
+        </article>
+
+
+        <article class="catalogue-entry">
+
+          <span class="status status-planned">
+            Proposed entry
+          </span>
+
+          <h3>MRIO-based unequal-exchange estimation</h3>
+
+          <p>
+            A future entry will document a specific
+            published implementation, including
+            its input–output model, extensions,
+            data, measured flows and any
+            additional valuation procedure.
+          </p>
+
+          <p class="methods-small">
+            The original publication and formulation
+            have not yet been selected.
+          </p>
+
+        </article>
+
+
+        <article class="catalogue-entry">
+
+          <span class="status status-planned">
+            Proposed entry
+          </span>
+
+          <h3>Ecological-flow accounting and valuation</h3>
+
+          <p>
+            A future entry will document a specific
+            published study, identifying its
+            resource categories, units, accounting
+            boundaries and interpretation.
+          </p>
+
+          <p class="methods-small">
+            The original publication and formulation
+            have not yet been selected.
+          </p>
+
+        </article>
+
+        </details>
+      </div>
+    </section>
+    <hr class="methods-divider">
+
     <!-- RELINKING LAB -->
 
     <section>
       <div class="container">
 
-        <p class="methods-kicker">06 / Beyond measurement</p>
+        <p class="methods-kicker">07 / Beyond measurement</p>
 
         <h2>From diagnosis to transformation</h2>
 
@@ -1009,9 +1003,7 @@
       </p>
 
       <p class="methods-small">
-        Methods Library v0.2 · Methodological map
-        and documentation standard.
-        Publication-specific entries generated from the catalogue.
+        Methods Library · Published entries generated from the catalogue; planned research listed separately.
       </p>
 
     </div>
