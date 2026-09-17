@@ -227,3 +227,92 @@ nav a:focus-visible {
     padding: 36px 0 24px;
   }
 }
+
+/* v0.2 — Header and page alignment fixes */
+
+/* Keep page content away from screen edges */
+body > header,
+body > main,
+body > footer {
+  width: 100%;
+}
+
+.container {
+  width: min(1100px, calc(100% - 48px));
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Accommodate the homepage's different header markup */
+header {
+  padding: 20px 24px;
+}
+
+header .container {
+  padding: 0;
+}
+
+header nav {
+  margin-top: 12px;
+}
+
+header .brand {
+  display: inline-block;
+  margin-right: 24px;
+  line-height: 1.4;
+}
+
+/* Space out text that sits directly inside the header */
+header > * + * {
+  margin-top: 12px;
+}
+
+/* Prevent the homepage's title and version label colliding */
+header .eyebrow,
+header .tag {
+  display: inline-block;
+  margin: 8px 0;
+}
+
+/* Make the skip link accessible without permanently displaying it */
+.skip-link {
+  position: absolute;
+  left: 16px;
+  top: -100px;
+  z-index: 1000;
+  padding: 10px 14px;
+  background: var(--white);
+  color: var(--red);
+}
+
+.skip-link:focus {
+  top: 12px;
+}
+
+/* Give content sensible spacing even without a .container wrapper */
+main > section,
+main > .hero {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Comfortable spacing on mobile */
+@media (max-width: 700px) {
+  header {
+    padding: 16px 20px;
+  }
+
+  .container {
+    width: calc(100% - 40px);
+  }
+
+  header nav {
+    gap: 14px;
+  }
+
+  main > section,
+  main > .hero {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
