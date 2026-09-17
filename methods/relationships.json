@@ -11,5 +11,19 @@
     "type": "follows_method",
     "note": "Hickel et al. (2022) explicitly follow Dorninger et al. (2021)'s footprint-analysis approach.",
     "evidence": "Hickel et al. (2022), Introduction."
+  },
+  {
+    "from": "hickel-sullivan-2024",
+    "to": "hickel-2022",
+    "type": "shared_authors",
+    "note": "Jason Hickel is an author of both papers.",
+    "evidence": "Hickel and Sullivan (2024), title page; Hickel et al. (2022), reference list."
+  },
+  {
+    "from": "hickel-sullivan-2024",
+    "to": "hickel-2022",
+    "type": "cites",
+    "note": "The 2024 paper cites the 2022 study for its estimate that 43% of material resources used by advanced economies are net-appropriated from emerging and developing economies. This is a cited result, not a reuse of the 2022 dataset to estimate unequal exchange.",
+    "evidence": "Hickel and Sullivan (2024), p. 2 and references, p. 8."
   }
 ]
