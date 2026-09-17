@@ -16,7 +16,13 @@
       "labour"
     ],
     "path": "dorninger/",
-    "status": "Corrected R model executed — close fit agreement; exact replication unresolved"
+    "status": "Corrected R model executed — close fit agreement; exact replication unresolved",
+    "levels": {
+      "mechanism": "Investigates ecologically unequal exchange through asymmetries in embodied resource and labour flows between countries.",
+      "strategy": "Accounts for embodied materials, energy, land and labour in trade and examines relationships with income and other factors.",
+      "technique": "Eora multiregional input–output accounting, trade in value added and piecewise structural equation modelling.",
+      "output": "Embodied material, energy, land and labour flows; trade in value added and modelled statistical relationships."
+    }
   },
   {
     "id": "hickel-2022",
@@ -34,7 +40,13 @@
     ],
     "path": "hickel-2022/",
     "summary": "Examines resource appropriation through unequal exchange in the world economy over 1990–2015.",
-    "status": "Methodological profile under development; replication not attempted"
+    "status": "Methodological profile under development; replication not attempted",
+    "levels": {
+      "mechanism": "Interprets net North–South appropriation of embodied resources and labour through unequal exchange.",
+      "strategy": "Reaggregates embodied-flow estimates into North–South net transfers and adds monetary valuation calculations.",
+      "technique": "Uses the Eora v.199.82 MRIO dataset reported by Dorninger et al. (2021), covering 1990–2015; adds monetary calculations.",
+      "output": "Net embodied transfers of materials, energy, land and labour, alongside monetary estimates."
+    }
   },
   {
     "id": "hickel-sullivan-2024",
@@ -54,6 +66,12 @@
     ],
     "path": "hickel-2024/",
     "summary": "Synthesises needs-based poverty research and compares published decent-living energy and material requirements with current global resource use. It is not an unequal-exchange flow estimate.",
-    "status": "Source-based methodological profile; independent replication not attempted"
+    "status": "Source-based methodological profile; independent replication not attempted",
+    "levels": {
+      "mechanism": "Examines how meeting basic needs and providing decent living standards relate to economic growth and resource requirements; does not estimate an unequal-exchange mechanism.",
+      "strategy": "Synthesises needs-based thresholds and published decent-living resource estimates and compares these with current resource use.",
+      "technique": "Literature-based synthesis and scenario comparison; adjusts IEA energy figures using a territorial-to-consumption-based ratio reported in Hickel et al. (2022). No full MRIO rerun.",
+      "output": "Needs-based income thresholds and comparisons of energy and material requirements with current resource use; not an estimate of unequal-exchange flows."
+    }
   }
 ]
