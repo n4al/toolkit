@@ -6,6 +6,8 @@ The Toolkit is an open research initiative that brings together methodological d
 
 We welcome contributions from researchers, students, practitioners, developers and anyone interested in improving the resource. You do not need programming experience to participate.
 
+The [Contribute page](https://unequal-exchange-toolkit.github.io/toolkit/contribute/) provides an overview of ways to get involved. This guide explains how to propose contributions, document research and prepare work for review.
+
 ## How you can contribute
 
 There are several ways to get involved.
