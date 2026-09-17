@@ -8,7 +8,7 @@
   {
     "from": "hickel-2022",
     "to": "dorninger-2021",
-    "type": "uses_data",
+    "type": "follows_data",
     "note": "Hickel et al. (2022) explicitly source their dataset from Dorninger et al. (2021). Both use Eora v.199.82 for 1990–2015, but the later paper reorganises the analysis around North–South flows and introduces additional monetary calculations.",
     "evidence": "Hickel et al. (2022), methods section, dataset provenance statement; Dorninger et al. (2021), section 3.1."
   },
