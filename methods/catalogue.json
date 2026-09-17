@@ -47,12 +47,17 @@
     "path": "hickel-2022/",
     "summary": "Examines resource appropriation through unequal exchange in the world economy over 1990–2015.",
     "status": "Methodological profile under development; replication not attempted",
-    "related_studies": [
-      {
-        "id": "dorninger-2021",
-        "relationship": "shared_authors",
-        "note": "Christian Dorninger and Hanspeter Wieland are co-authors of both studies."
-      }
-    ]
+"related_studies": [
+  {
+    "id": "dorninger-2021",
+    "relationship": "shared_authors",
+    "note": "Christian Dorninger and Hanspeter Wieland are co-authors of both studies."
+  },
+  {
+    "id": "dorninger-2021",
+    "relationship": "follows_method",
+    "note": "Hickel et al. (2022) explicitly follow Dorninger et al. (2021)'s footprint-analysis approach."
+  }
+]
   }
 ]
