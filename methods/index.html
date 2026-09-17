@@ -1,224 +1,1004 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A developing research library documenting unequal-exchange theories, estimation strategies, computational techniques and published methods.">
   <title>Methods Library | Unequal Exchange Toolkit</title>
-
-  <meta name="description" content="A guide to different approaches to researching and measuring unequal exchange.">
-
   <link rel="stylesheet" href="../assets/style.css">
+
+  <style>
+    .methods-intro {
+      max-width: 820px;
+    }
+
+    .methods-kicker {
+      color: #9d302a;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .methods-note {
+      background: #fffdf8;
+      border-left: 4px solid #9d302a;
+      padding: 20px 24px;
+      margin: 26px 0;
+    }
+
+    .methods-note p:last-child {
+      margin-bottom: 0;
+    }
+
+    .methods-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin: 28px 0;
+    }
+
+    .method-card {
+      background: #fffdf8;
+      border: 1px solid #cfc6b8;
+      padding: 26px;
+    }
+
+    .method-card h3 {
+      font-size: 1.35rem;
+      line-height: 1.3;
+      margin: 10px 0;
+    }
+
+    .method-card p {
+      color: #645e56;
+      font-size: 0.94rem;
+    }
+
+    .method-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    .method-label {
+      color: #9d302a;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .methods-table-wrap {
+      overflow-x: auto;
+      margin: 26px 0;
+    }
+
+    .methods-table {
+      border-collapse: collapse;
+      width: 100%;
+      min-width: 690px;
+      background: #fffdf8;
+    }
+
+    .methods-table th,
+    .methods-table td {
+      border: 1px solid #cfc6b8;
+      padding: 15px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .methods-table thead {
+      background: #e9e1d5;
+    }
+
+    .methods-table th {
+      font-weight: 700;
+    }
+
+    .methods-table td {
+      font-size: 0.93rem;
+    }
+
+    .catalogue-entry {
+      background: #fffdf8;
+      border: 1px solid #cfc6b8;
+      padding: 26px;
+      margin: 18px 0;
+    }
+
+    .catalogue-entry h3 {
+      margin: 8px 0 12px;
+    }
+
+    .catalogue-entry p {
+      color: #645e56;
+    }
+
+    .status {
+      display: inline-block;
+      border: 1px solid #cfc6b8;
+      padding: 4px 9px;
+      font-size: 0.74rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .status-planned {
+      background: #f4f0e8;
+    }
+
+    .status-framework {
+      background: #e6eee4;
+      border-color: #9eb39a;
+    }
+
+    .methods-steps {
+      padding-left: 24px;
+    }
+
+    .methods-steps li {
+      padding-left: 8px;
+      margin-bottom: 14px;
+    }
+
+    .methods-steps strong {
+      display: block;
+    }
+
+    .methods-small {
+      color: #645e56;
+      font-size: 0.88rem;
+    }
+
+    .methods-divider {
+      border: 0;
+      border-top: 1px solid #cfc6b8;
+      margin: 0;
+    }
+
+    .methods-footer {
+      border-top: 1px solid #cfc6b8;
+      padding: 28px 0 45px;
+      color: #645e56;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 760px) {
+      .methods-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<header>
-  <div class="container">
-    <a class="brand" href="../index.html">
-      UNEQUAL EXCHANGE TOOLKIT
-    </a>
-
-    <nav aria-label="Main navigation">
-      <a href="../index.html">Home</a>
-      <a href="../methods/">Methods</a>
-      <a href="../data/">Data</a>
-      <a href="../relinking-lab/">Relinking Lab</a>
-      <a href="../contribute/">Contribute</a>
-    </nav>
-  </div>
-</header>
-
-<main>
-
-  <div class="hero">
+  <header>
     <div class="container">
+      <a class="brand" href="../index.html">UNEQUAL EXCHANGE TOOLKIT</a>
 
-      <p class="eyebrow">Research resource / 01</p>
-
-      <h1>Methods Library</h1>
-
-      <p class="lead">
-        Unequal exchange is investigated through
-        different theoretical frameworks, methods
-        and units of analysis.
-      </p>
-
-      <p class="lead">
-        This library will document those approaches
-        without treating their measurements as
-        interchangeable.
-      </p>
-
+      <nav aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="../methods/" aria-current="page">Methods</a>
+        <a href="../data/">Data catalogue</a>
+        <a href="../relinking-lab/">Relinking Lab</a>
+        <a href="../contribute/">Contribute</a>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <section>
-    <div class="container">
+  <main id="main">
 
-      <p class="eyebrow">Purpose</p>
+    <!-- INTRODUCTION -->
 
-      <h2>What are we measuring?</h2>
+    <section class="hero">
+      <div class="container">
+        <div class="methods-intro">
 
-      <p>
-        Different approaches to unequal exchange
-        investigate different relationships:
-        international price formation, labour
-        embodied in trade, material and energy
-        flows, and the distribution of value
-        across production networks.
-      </p>
-
-      <p>
-        Each method requires its own definitions,
-        data, assumptions and interpretation.
-        A result produced using one approach
-        cannot automatically be substituted
-        for a result produced using another.
-      </p>
-
-    </div>
-  </section>
-
-  <section>
-    <div class="container">
-
-      <p class="eyebrow">Research approaches</p>
-
-      <h2>Areas for documentation</h2>
-
-      <div class="grid">
-
-        <article class="card">
-          <p class="tag">Method family</p>
-          <h3>Monetary approaches</h3>
-          <p>
-            Approaches examining international
-            prices, wages, productivity and
-            transfers of value.
+          <p class="methods-kicker">
+            Open research / Methods Library
           </p>
-          <p>
-            Future documentation will distinguish
-            specific models and their assumptions.
+
+          <h1>How is unequal exchange investigated?</h1>
+
+          <p class="lead">
+            A developing library of theories, measurement
+            strategies, computational techniques and
+            publication-specific methods.
           </p>
+
+          <p>
+            Unequal-exchange research investigates international
+            economic relationships through different theoretical
+            frameworks and empirical approaches. These may involve
+            wages and prices, labour requirements, monetary
+            valuations or biophysical flows.
+          </p>
+
+          <p>
+            The approaches do not necessarily measure the same
+            phenomenon. A theoretical explanation of unequal
+            exchange is not itself a calculation procedure,
+            and a measured quantity is not automatically
+            evidence of a particular mechanism.
+          </p>
+
+          <div class="methods-note">
+
+            <strong>Purpose of the library</strong>
+
+            <p>
+              To document published methods on their own terms,
+              clarify how their theoretical assumptions connect
+              to their calculations, and make differences in
+              data, units, boundaries and interpretation visible.
+            </p>
+
+            <p>
+              The library distinguishes documentation of
+              published research from independent replication
+              and experimental work developed within the Toolkit.
+            </p>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- FOUR ANALYTICAL LEVELS -->
+
+    <section>
+      <div class="container">
+
+        <p class="methods-kicker">01 / Methodological foundations</p>
+
+        <h2>Four levels of analysis</h2>
+
+        <p>
+          A published study may combine all four levels.
+          Distinguishing them helps prevent a theory,
+          calculation, dataset or measured quantity
+          from being mistaken for an entire method.
+        </p>
+
+        <div class="methods-grid">
+
+          <article class="method-card">
+
+            <span class="method-label">Level 01 / Explanation</span>
+
+            <h3>Theoretical mechanism</h3>
+
+            <p>
+              What is proposed to produce unequal exchange?
+            </p>
+
+            <p>
+              Examples include explanations involving
+              international wage differences, differences
+              in production conditions and profit-rate
+              equalisation, and ecological appropriation.
+            </p>
+
+          </article>
+
+
+          <article class="method-card">
+
+            <span class="method-label">Level 02 / Operationalisation</span>
+
+            <h3>Estimation strategy</h3>
+
+            <p>
+              How is the theoretical proposition translated
+              into something that can be investigated?
+            </p>
+
+            <p>
+              Examples include counterfactual price or wage
+              valuation, embodied-flow accounting and
+              comparisons involving theoretically specified
+              prices of production.
+            </p>
+
+          </article>
+
+
+          <article class="method-card">
+
+            <span class="method-label">Level 03 / Implementation</span>
+
+            <h3>Computational technique</h3>
+
+            <p>
+              How are the relevant quantities estimated?
+            </p>
+
+            <p>
+              Examples include multiregional input–output
+              analysis, trade-data analysis, labour
+              compensation data and environmentally
+              extended accounting.
+            </p>
+
+          </article>
+
+
+          <article class="method-card">
+
+            <span class="method-label">Level 04 / Output</span>
+
+            <h3>Measured quantity</h3>
+
+            <p>
+              What does the calculation produce?
+            </p>
+
+            <p>
+              Depending on the study, outputs may include
+              monetary estimates, labour hours, tonnes
+              of materials, land area or units of energy.
+            </p>
+
+          </article>
+
+        </div>
+
+        <div class="methods-note">
+
+          <strong>Example: embodied labour</strong>
+
+          <p>
+            Embodied labour is a quantity or accounting
+            concept: the labour required to produce a
+            product, potentially including labour used
+            throughout upstream production.
+          </p>
+
+          <p>
+            Input–output analysis is one technique that
+            can be used to estimate it. A further
+            theoretical and methodological step is needed
+            to interpret those estimates as unequal
+            exchange or to assign them a monetary value.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="methods-divider">
+
+
+    <!-- RESEARCH APPROACHES -->
+
+    <section id="approaches">
+      <div class="container">
+
+        <p class="methods-kicker">02 / Research approaches</p>
+
+        <h2>Mapping the field</h2>
+
+        <p>
+          The following categories organise research
+          approaches for navigation. They are not mutually
+          exclusive: a single study may draw on a particular
+          theory, use input–output analysis and investigate
+          ecological flows.
+        </p>
+
+        <div class="methods-grid">
+
+
+          <article class="method-card">
+
+            <span class="method-label">
+              Approach 01 / Valuation
+            </span>
+
+            <h3>Wage differentials and counterfactual prices</h3>
+
+            <p>
+              Approaches that investigate unequal exchange
+              through specified relationships between wages,
+              prices and international production.
+            </p>
+
+            <p>
+              Empirical implementations may estimate
+              counterfactual prices or values under
+              alternative wage or valuation assumptions.
+              The precise calculation must be attributed
+              to the particular study.
+            </p>
+
+            <p class="methods-small">
+              Associated theoretical discussions include
+              Arghiri Emmanuel's work on unequal exchange.
+              No single distortion factor or formula is
+              assumed to apply to the entire category.
+            </p>
+
+          </article>
+
+
+          <article class="method-card">
+
+            <span class="method-label">
+              Approach 02 / Production accounting
+            </span>
+
+            <h3>Input–output and embodied-flow analysis</h3>
+
+            <p>
+              Uses input–output relationships to estimate
+              production requirements across sectors
+              and, in multiregional models, countries.
+            </p>
+
+            <p>
+              Depending on the model and its extensions,
+              this may involve embodied labour, materials,
+              energy, land or monetary flows.
+            </p>
+
+            <p class="methods-small">
+              Input–output analysis is a computational
+              technique. Embodied labour and resources
+              are possible measured quantities, not
+              interchangeable methods.
+            </p>
+
+          </article>
+
+
+          <article class="method-card">
+
+            <span class="method-label">
+              Approach 03 / Marxian value and prices
+            </span>
+
+            <h3>Prices of production and profit equalisation</h3>
+
+            <p>
+              Investigates theoretical accounts of
+              value transfer associated with differences
+              in production conditions and the formation
+              of prices of production.
+            </p>
+
+            <p>
+              Particular empirical studies may operationalise
+              these relationships using sectoral data,
+              value and price models or other specified
+              estimation procedures.
+            </p>
+
+            <p class="methods-small">
+              This is a theoretical tradition with
+              different possible empirical implementations.
+              It should not be conflated with Emmanuel's
+              wage-based explanation.
+            </p>
+
+          </article>
+
+
+          <article class="method-card">
+
+            <span class="method-label">
+              Approach 04 / Ecological accounting
+            </span>
+
+            <h3>Ecologically unequal exchange</h3>
+
+            <p>
+              Investigates asymmetric ecological and
+              biophysical relationships associated with
+              international production and consumption.
+            </p>
+
+            <p>
+              Studies may examine physical flows of
+              materials, energy or land, sometimes using
+              environmentally extended input–output
+              analysis and sometimes adding monetary
+              valuation.
+            </p>
+
+            <p class="methods-small">
+              Ecologically unequal exchange is a research
+              field and theoretical framework. Its
+              empirical techniques and measured quantities
+              must be identified study by study.
+            </p>
+
+          </article>
+
+        </div>
+
+        <p class="methods-small">
+          These categories are provisional navigational
+          groupings, not a claim that all unequal-exchange
+          research falls neatly into four distinct methods.
+        </p>
+
+      </div>
+    </section>
+
+    <hr class="methods-divider">
+
+
+    <!-- COMPARISON FRAMEWORK -->
+
+    <section>
+      <div class="container">
+
+        <p class="methods-kicker">03 / Interpretation</p>
+
+        <h2>What makes two estimates comparable?</h2>
+
+        <p>
+          Two studies may both investigate unequal exchange
+          while asking different questions or producing
+          different kinds of estimates. Comparison requires
+          more than a shared label.
+        </p>
+
+        <div class="methods-table-wrap">
+
+          <table class="methods-table">
+
+            <thead>
+              <tr>
+                <th scope="col">Dimension</th>
+                <th scope="col">Question to ask</th>
+                <th scope="col">Why it matters</th>
+              </tr>
+            </thead>
+
+            <tbody>
+
+              <tr>
+                <th scope="row">Theory</th>
+                <td>
+                  What mechanism does the study propose?
+                </td>
+                <td>
+                  Different explanations may identify
+                  different sources of unequal exchange.
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Estimation</th>
+                <td>
+                  How is the proposition operationalised?
+                </td>
+                <td>
+                  Different procedures may produce
+                  different estimates even when they
+                  investigate related questions.
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Technique</th>
+                <td>
+                  What computational or accounting
+                  method is used?
+                </td>
+                <td>
+                  Techniques have different assumptions,
+                  coverage and requirements.
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Unit</th>
+                <td>
+                  Currency, labour time, mass,
+                  land area, energy or another unit?
+                </td>
+                <td>
+                  Results in different units cannot
+                  be treated as interchangeable.
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Boundary</th>
+                <td>
+                  Which countries, sectors, supply-chain
+                  stages and years are included?
+                </td>
+                <td>
+                  Boundaries affect what is counted
+                  and what is excluded.
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Data</th>
+                <td>
+                  Which sources, versions and
+                  transformations are used?
+                </td>
+                <td>
+                  Data choices affect estimates
+                  and reproducibility.
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Interpretation</th>
+                <td>
+                  What conclusions are drawn from
+                  the measured results?
+                </td>
+                <td>
+                  A measured flow does not automatically
+                  establish every proposed causal mechanism.
+                </td>
+              </tr>
+
+              <tr>
+                <th scope="row">Verification</th>
+                <td>
+                  Are data, code and calculations
+                  available and independently checked?
+                </td>
+                <td>
+                  Documentation is not the same
+                  as replication.
+                </td>
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="methods-divider">
+
+
+    <!-- CATALOGUE -->
+
+    <section id="catalogue">
+      <div class="container">
+
+        <p class="methods-kicker">04 / Catalogue</p>
+
+        <h2>Publication-specific entries</h2>
+
+        <p>
+          The library will document individual published
+          methods and formulations. Each completed entry
+          will identify its source, explain its calculations
+          and distinguish the authors' claims from
+          the Toolkit's analysis.
+        </p>
+
+        <p>
+          Entries marked as proposed have not yet been
+          completed or independently verified.
+        </p>
+
+
+        <article class="catalogue-entry">
+
+          <span class="status status-framework">
+            Framework available
+          </span>
+
+          <h3>Method documentation standard</h3>
+
+          <p>
+            The common structure used to document
+            publication details, theory, estimation,
+            data, calculation procedures, limitations
+            and replication status.
+          </p>
+
+          <a href="#documentation-standard">
+            View the documentation standard →
+          </a>
+
         </article>
 
-        <article class="card">
-          <p class="tag">Method family</p>
-          <h3>Embodied labour</h3>
+
+        <article class="catalogue-entry">
+
+          <span class="status status-planned">
+            Proposed entry
+          </span>
+
+          <h3>Köhler's unequal-exchange research</h3>
+
           <p>
-            Approaches tracing labour embodied
-            in internationally traded goods
-            and services.
+            A publication-specific review is proposed.
+            The relevant publication and formulation
+            will be identified before documenting
+            its theoretical assumptions, calculations,
+            data requirements and outputs.
           </p>
-          <p>
-            Future documentation will identify
-            the input-output data, labour
-            measures and valuation choices used.
+
+          <p class="methods-small">
+            No calculation, replication or independent
+            verification is claimed.
           </p>
+
         </article>
 
-        <article class="card">
-          <p class="tag">Method family</p>
-          <h3>Materials and energy</h3>
+
+        <article class="catalogue-entry">
+
+          <span class="status status-planned">
+            Proposed entry
+          </span>
+
+          <h3>Wage-based counterfactual valuation</h3>
+
           <p>
-            Approaches examining the physical
-            resources embodied in trade,
-            including material and energy flows.
+            A future entry will document a specific
+            empirical study, identifying the wage
+            comparisons, valuation assumptions and
+            calculation procedure it actually uses.
           </p>
-          <p>
-            Physical quantities and monetary
-            valuations will be distinguished.
+
+          <p class="methods-small">
+            The original publication and formulation
+            have not yet been selected.
           </p>
+
         </article>
 
-        <article class="card">
-          <p class="tag">Related analysis</p>
-          <h3>Global production networks</h3>
+
+        <article class="catalogue-entry">
+
+          <span class="status status-planned">
+            Proposed entry
+          </span>
+
+          <h3>MRIO-based unequal-exchange estimation</h3>
+
           <p>
-            Approaches investigating ownership,
-            production, value capture and
-            control across interconnected
-            economic activities.
+            A future entry will document a specific
+            published implementation, including
+            its input–output model, extensions,
+            data, measured flows and any
+            additional valuation procedure.
           </p>
+
+          <p class="methods-small">
+            The original publication and formulation
+            have not yet been selected.
+          </p>
+
+        </article>
+
+
+        <article class="catalogue-entry">
+
+          <span class="status status-planned">
+            Proposed entry
+          </span>
+
+          <h3>Ecological-flow accounting and valuation</h3>
+
           <p>
-            These analyses may complement
-            unequal-exchange research but
-            should not be presented as
-            equivalent measurements.
+            A future entry will document a specific
+            published study, identifying its
+            resource categories, units, accounting
+            boundaries and interpretation.
           </p>
+
+          <p class="methods-small">
+            The original publication and formulation
+            have not yet been selected.
+          </p>
+
         </article>
 
       </div>
+    </section>
 
-    </div>
-  </section>
+    <hr class="methods-divider">
 
-  <section>
+
+    <!-- DOCUMENTATION STANDARD -->
+
+    <section id="documentation-standard">
+      <div class="container">
+
+        <p class="methods-kicker">05 / Documentation</p>
+
+        <h2>What a completed method entry contains</h2>
+
+        <p>
+          Each entry should address the following
+          questions. Missing information must be
+          identified rather than silently supplied.
+        </p>
+
+        <ol class="methods-steps">
+
+          <li>
+            <strong>Publication and version</strong>
+            Original authors, title, year, publication
+            details and relevant revisions.
+          </li>
+
+          <li>
+            <strong>Research question</strong>
+            What the authors are investigating,
+            using their terminology where appropriate.
+          </li>
+
+          <li>
+            <strong>Theoretical mechanism</strong>
+            The proposed explanation of unequal exchange.
+          </li>
+
+          <li>
+            <strong>Estimation strategy</strong>
+            How the theoretical proposition is
+            translated into measurable relationships.
+          </li>
+
+          <li>
+            <strong>Computational technique</strong>
+            The mathematical, statistical or
+            accounting procedures used.
+          </li>
+
+          <li>
+            <strong>Measured quantities and units</strong>
+            Exactly what the calculations produce.
+          </li>
+
+          <li>
+            <strong>Scope and boundaries</strong>
+            Geographical coverage, sectors,
+            production stages and time period.
+          </li>
+
+          <li>
+            <strong>Data requirements</strong>
+            Sources, versions, variables,
+            transformations and access conditions.
+          </li>
+
+          <li>
+            <strong>Calculation procedure</strong>
+            Published equations and steps,
+            accurately explained and attributed.
+          </li>
+
+          <li>
+            <strong>Assumptions and limitations</strong>
+            Distinguish limitations acknowledged
+            by the authors from questions raised
+            by the Toolkit.
+          </li>
+
+          <li>
+            <strong>Interpretation</strong>
+            What the published results support
+            and what they do not establish
+            on their own.
+          </li>
+
+          <li>
+            <strong>Replication status</strong>
+            Documentation only, partial
+            implementation or independently
+            checked reproduction.
+          </li>
+
+          <li>
+            <strong>References and attribution</strong>
+            Original publications, datasets,
+            code and related documentation.
+          </li>
+
+        </ol>
+
+        <div class="methods-note">
+
+          <strong>Documentation is not replication</strong>
+
+          <p>
+            Explaining a published method does not
+            establish that the Toolkit has reproduced
+            its calculations or verified its empirical
+            findings. Each entry must state its
+            implementation and verification status.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="methods-divider">
+
+
+    <!-- RELINKING LAB -->
+
+    <section>
+      <div class="container">
+
+        <p class="methods-kicker">06 / Beyond measurement</p>
+
+        <h2>From diagnosis to transformation</h2>
+
+        <p>
+          Unequal-exchange methods can help investigate
+          existing economic relationships. They do not,
+          by themselves, establish what would be required
+          to reorganise those relationships or reproduce
+          new capacities.
+        </p>
+
+        <p>
+          The Relinking Lab investigates a complementary
+          question: how might changing relationships
+          between actors enable specific capacities
+          to emerge, become accessible and reproduce
+          over time?
+        </p>
+
+        <p>
+          The two parts of the Toolkit remain analytically
+          distinct. Any future integration will need to
+          specify how a particular unequal-exchange
+          method informs a particular relinking scenario.
+        </p>
+
+        <p>
+          <a href="../relinking-lab/">
+            Explore the Relinking Lab →
+          </a>
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="methods-footer">
     <div class="container">
 
-      <p class="eyebrow">Documentation standard</p>
-
-      <h2>What each method entry should contain</h2>
-
       <p>
-        As the library develops, individual
-        entries should specify the research
-        question, theoretical basis, unit
-        of analysis, required datasets,
-        calculation procedure, assumptions,
-        geographical coverage and limitations.
+        Unequal Exchange Toolkit · Open research in development
       </p>
 
       <p>
-        Published methods and any independently
-        implemented calculations will be
-        clearly distinguished. No calculator
-        is presented here as validated or
-        operational.
+        <a href="../index.html">Home</a> ·
+        <a href="../data/">Data catalogue</a> ·
+        <a href="../relinking-lab/">Relinking Lab</a> ·
+        <a href="../contribute/">Contribute</a>
+      </p>
+
+      <p class="methods-small">
+        Methods Library v0.2 · Methodological map
+        and documentation standard.
+        Publication-specific entries forthcoming.
       </p>
 
     </div>
-  </section>
-
-  <section>
-    <div class="container">
-
-      <p class="eyebrow">Project status</p>
-
-      <h2>A library under construction</h2>
-
-      <p>
-        This page establishes the structure
-        of the Methods Library. Detailed
-        methodological entries, citations
-        and reproducible implementations
-        will be added as they are reviewed.
-      </p>
-
-      <a class="button" href="../index.html">
-        Back to homepage &rarr;
-      </a>
-
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="container">
-    <p>
-      Unequal Exchange Toolkit —
-      an open research initiative.
-    </p>
-
-    <p>
-      <a href="https://github.com/unequal-exchange-toolkit/toolkit">
-        View the project on GitHub
-      </a>
-    </p>
-  </div>
-</footer>
+  </footer>
 
 </body>
 </html>
