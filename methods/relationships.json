@@ -23,7 +23,7 @@
     "from": "hickel-sullivan-2024",
     "to": "hickel-2022",
     "type": "cites",
-    "note": "The 2024 paper cites the 2022 study for its estimate that 43% of material resources used by advanced economies are net-appropriated from emerging and developing economies. This is a cited result, not a reuse of the 2022 dataset to estimate unequal exchange.",
+    "note": "The 2024 paper cites the 2022 study's estimate that 43% of material resources used by advanced economies are net-appropriated from emerging and developing economies. It also uses the earlier study's territorial-to-consumption-based primary-energy ratio to adjust IEA figures. This is reuse of a derived parameter, not a rerun of the underlying Eora dataset.",
     "evidence": "Hickel and Sullivan (2024), p. 2 and references, p. 8."
   }
 ]
