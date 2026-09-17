@@ -170,6 +170,12 @@
         grid-template-columns: 1fr;
       }
     }
+
+    .catalogue-controls { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin:24px 0; }
+    .catalogue-controls label { font-weight:700; font-size:.88rem; }
+    .catalogue-controls input, .catalogue-controls select { padding:10px; border:1px solid #cfc6b8; background:#fffdf8; color:inherit; max-width:100%; }
+    .catalogue-controls input { flex:1 1 220px; }
+    .method-card a { overflow-wrap:anywhere; }
   </style>
 </head>
 
@@ -694,6 +700,17 @@
         </p>
 
 
+        <div class="catalogue-controls" aria-label="Filter publication entries">
+          <label for="publication-search">Search published studies</label>
+          <input id="publication-search" type="search" placeholder="Search author, title or technique…">
+          <label for="publication-category">Research approach</label>
+          <select id="publication-category"><option value="">All approaches</option></select>
+        </div>
+        <p id="publication-message" class="methods-small" role="status" aria-live="polite">Loading publication entries…</p>
+        <div id="publication-cards" class="methods-grid" aria-label="Publication entries"></div>
+        <noscript><p><a href="dorninger/">Dorninger et al. (2021): Global patterns of ecologically unequal exchange</a> — partial independent reconstruction, verification ongoing.</p></noscript>
+        <h3>Documentation framework and proposed entries</h3>
+
         <article class="catalogue-entry">
 
           <span class="status status-framework">
@@ -994,11 +1011,70 @@
       <p class="methods-small">
         Methods Library v0.2 · Methodological map
         and documentation standard.
-        Publication-specific entries forthcoming.
+        Publication-specific entries generated from the catalogue.
       </p>
 
     </div>
   </footer>
 
+  <script>
+    (() => {
+      const cards = document.getElementById('publication-cards');
+      const message = document.getElementById('publication-message');
+      const search = document.getElementById('publication-search');
+      const category = document.getElementById('publication-category');
+      let entries = [];
+      const el = (tag, className, text) => {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text !== undefined) node.textContent = text;
+        return node;
+      };
+      function render() {
+        const query = search.value.trim().toLowerCase();
+        const filtered = entries.filter(item =>
+          (!category.value || item.category === category.value) &&
+          [item.title, item.authors, item.year, item.category, item.summary, item.status, ...(item.tags || [])]
+            .join(' ').toLowerCase().includes(query)
+        );
+        cards.replaceChildren();
+        for (const item of filtered) {
+          const article = el('article', 'method-card');
+          article.append(el('span', 'method-label', item.category));
+          article.append(el('h3', '', `${item.authors} (${item.year})`));
+          article.append(el('p', '', item.title));
+          article.append(el('p', '', item.summary));
+          article.append(el('p', 'methods-small', `Verification: ${item.status}`));
+          const link = el('a', '', 'Read method entry →');
+          link.href = item.path;
+          article.append(link);
+          cards.append(article);
+        }
+        message.textContent = `${filtered.length} publication ${filtered.length === 1 ? 'entry' : 'entries'} shown.`;
+      }
+      fetch('./catalogue.json', { cache: 'no-cache' })
+        .then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
+        .then(data => {
+          if (!Array.isArray(data)) throw new Error('Catalogue must be an array');
+          entries = data.filter(item => item && item.title && item.authors && item.year && item.path);
+          for (const name of [...new Set(entries.map(item => item.category).filter(Boolean))].sort()) {
+            const option = el('option', '', name);
+            option.value = name;
+            category.append(option);
+          }
+          search.addEventListener('input', render);
+          category.addEventListener('change', render);
+          render();
+        })
+        .catch(() => {
+          message.textContent = 'The catalogue could not be loaded. You can still open the Dorninger entry below.';
+          const fallback = el('p');
+          const link = el('a', '', 'Dorninger et al. (2021) — method entry →');
+          link.href = 'dorninger/';
+          fallback.append(link);
+          cards.append(fallback);
+        });
+    })();
+  </script>
 </body>
 </html>
