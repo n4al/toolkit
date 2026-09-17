@@ -50,33 +50,33 @@ If the study builds on or relates to an existing entry, you can mention that too
 
 ### Document a study
 
-If you would like to contribute a more substantial entry, please describe the study's methodology using the four analytical levels adopted by the library.
+If you would like to contribute a more substantial entry, describe how the study develops and substantiates its argument. The Methods Library uses four analytical levels to help distinguish theoretical explanations, research strategies, analytical procedures and findings.
 
 **1. Theoretical mechanism**
 
-What does the study seek to explain? What theoretical argument or mechanism does it propose?
+What does the study seek to explain? What theoretical argument, relationship or mechanism does it propose?
 
-**2. Estimation strategy**
+**2. Research and estimation strategy**
 
-How does the study translate its research question into something that can be investigated or estimated?
+How does the study translate its research question or theoretical argument into an investigation? This might involve historical comparison, tracing relationships across time, constructing a counterfactual or estimating economic flows.
 
-**3. Computational technique**
+**3. Analytical and computational techniques**
 
-What mathematical, statistical or accounting procedures does it use?
+How does the study analyse its evidence? Identify the relevant procedures, such as archival analysis, documentary analysis, comparative analysis, statistical modelling or input–output accounting.
 
-**4. Measured quantities**
+**4. Findings and measured quantities**
 
-What does the study actually calculate or produce, and in which units?
+What does the investigation establish, explain or estimate? Describe its principal findings and, where applicable, the quantities calculated and their units.
 
-These levels are not competing categories. A study may involve all four, and they should be described in relation to its actual research design.
+These levels are analytical distinctions, not four separate types of research. A study may involve all four, but their application will depend on its research design. Do not invent quantitative procedures or measured quantities for historical, qualitative or theoretical work.
+
+For theoretical contributions without a distinct empirical investigation, explain how the author develops the argument, including the concepts, premises, evidence and reasoning used. Where a level genuinely does not apply, mark it as "Not applicable" and briefly explain why.
 
 For studies that do not estimate unequal-exchange flows directly, describe their own research questions and methods rather than forcing them into an unequal-exchange framework.
 
 The [Methods Library](https://unequal-exchange-toolkit.github.io/toolkit/methods/) explains the four levels in more detail.
 
-Where possible, also identify the study's data sources, geographical and temporal coverage, key assumptions, limitations and interpretation of results.
-
-Please include page numbers, section references or links to supporting documentation. If something cannot be established from the available sources, it is fine to identify it as unresolved.
+Where relevant, identify the study's sources, geographical and temporal coverage, assumptions, limitations and interpretation of findings. Include page numbers, section references or links to supporting documentation wherever possible. If something cannot be established from the available sources, identify it as unresolved.
 
 You do not need to reproduce a study's calculations to document its methodology.
 
