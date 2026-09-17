@@ -1070,20 +1070,15 @@
         }
         message.textContent = `${filtered.length} publication ${filtered.length === 1 ? 'entry' : 'entries'} shown.`;
       }
-      Promise.all([
-        fetch('./catalogue.json', { cache: 'no-cache' }).then(response => {
+      // The publication catalogue must work even if the optional connections fail.
+      fetch('./catalogue.json', { cache: 'no-cache' })
+        .then(response => {
           if (!response.ok) throw new Error(`Catalogue HTTP ${response.status}`);
           return response.json();
-        }),
-        fetch('./relationships.json', { cache: 'no-cache' }).then(response => {
-          if (!response.ok) throw new Error(`Relationships HTTP ${response.status}`);
-          return response.json();
         })
-      ])
-        .then(([data, links]) => {
-          if (!Array.isArray(data) || !Array.isArray(links)) throw new Error('Expected JSON arrays');
+        .then(data => {
+          if (!Array.isArray(data)) throw new Error('Catalogue must be a JSON array');
           entries = data.filter(item => item && item.id && item.title && item.authors && item.year && item.path);
-          relationships = links.filter(link => link && link.from && link.to && link.type);
           for (const name of [...new Set(entries.map(item => item.category).filter(Boolean))].sort()) {
             const option = el('option', '', name);
             option.value = name;
@@ -1092,10 +1087,28 @@
           search.addEventListener('input', render);
           category.addEventListener('change', render);
           render();
+
+          // Absolute site path avoids relative URL resolution problems on GitHub Pages.
+          // A missing connections file must never remove the publication cards.
+          return fetch('/toolkit/methods/relationships.json', { cache: 'no-cache' })
+            .then(response => {
+              if (!response.ok) throw new Error(`Relationships HTTP ${response.status}`);
+              return response.json();
+            })
+            .then(links => {
+              if (!Array.isArray(links)) throw new Error('Relationships must be a JSON array');
+              relationships = links.filter(link => link && link.from && link.to && link.type);
+              render();
+            })
+            .catch(error => {
+              console.warn('Research connections unavailable; publication catalogue still works:', error);
+              message.textContent = `${entries.length} publication ${entries.length === 1 ? 'entry' : 'entries'} shown. Research connections temporarily unavailable.`;
+            });
         })
         .catch(error => {
-          console.error('Methods library loading error:', error);
+          console.error('Methods catalogue loading error:', error);
           message.textContent = 'The catalogue could not be loaded. You can still open the Dorninger entry below.';
+          cards.replaceChildren();
           const fallback = el('p');
           const link = el('a', '', 'Dorninger et al. (2021) — method entry →');
           link.href = 'dorninger/';
