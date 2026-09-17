@@ -1022,28 +1022,86 @@
         if (text !== undefined) node.textContent = text;
         return node;
       };
-      function render() {
-        const query = search.value.trim().toLowerCase();
-        const filtered = entries.filter(item =>
-          (!category.value || item.category === category.value) &&
-          [item.title, item.authors, item.year, item.category, item.summary, item.status, ...(item.tags || [])]
-            .join(' ').toLowerCase().includes(query)
+  function render() {
+  const query = search.value.trim().toLowerCase();
+
+  const filtered = entries.filter(item =>
+    (!category.value || item.category === category.value) &&
+    [
+      item.title,
+      item.authors,
+      item.year,
+      item.category,
+      item.summary,
+      item.status,
+      ...(item.tags || [])
+    ].join(' ').toLowerCase().includes(query)
+  );
+
+  cards.replaceChildren();
+
+  for (const item of filtered) {
+    const article = el('article', 'method-card');
+
+    article.append(el('span', 'method-label', item.category));
+    article.append(el('h3', '', `${item.authors} (${item.year})`));
+    article.append(el('p', '', item.title));
+
+    if (item.summary) {
+      article.append(el('p', '', item.summary));
+    }
+
+    article.append(
+      el('p', 'methods-small', `Verification: ${item.status}`)
+    );
+
+    const link = el('a', '', 'Read method entry →');
+    link.href = item.path;
+    article.append(link);
+
+    // Display related studies using their catalogue records.
+    const related = (item.related_studies || [])
+      .map(relation => ({
+        relation,
+        study: entries.find(entry => entry.id === relation.id)
+      }))
+      .filter(result => result.study);
+
+    if (related.length > 0) {
+      const heading = el('p', 'methods-small', 'Related studies:');
+      article.append(heading);
+
+      const list = el('ul');
+
+      for (const { relation, study } of related) {
+        const listItem = el('li');
+        const relatedLink = el(
+          'a',
+          '',
+          `${study.authors} (${study.year})`
         );
-        cards.replaceChildren();
-        for (const item of filtered) {
-          const article = el('article', 'method-card');
-          article.append(el('span', 'method-label', item.category));
-          article.append(el('h3', '', `${item.authors} (${item.year})`));
-          article.append(el('p', '', item.title));
-          article.append(el('p', '', item.summary));
-          article.append(el('p', 'methods-small', `Verification: ${item.status}`));
-          const link = el('a', '', 'Read method entry →');
-          link.href = item.path;
-          article.append(link);
-          cards.append(article);
+
+        relatedLink.href = study.path;
+        listItem.append(relatedLink);
+
+        if (relation.note) {
+          listItem.append(
+            el('span', 'methods-small', ` — ${relation.note}`)
+          );
         }
-        message.textContent = `${filtered.length} publication ${filtered.length === 1 ? 'entry' : 'entries'} shown.`;
+
+        list.append(listItem);
       }
+
+      article.append(list);
+    }
+
+    cards.append(article);
+  }
+
+  message.textContent =
+    `${filtered.length} publication ${filtered.length === 1 ? 'entry' : 'entries'} shown.`;
+}
       fetch('./catalogue.json', { cache: 'no-cache' })
         .then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
         .then(data => {
