@@ -1,0 +1,15 @@
+[
+  {
+    "from": "hickel-2022",
+    "to": "dorninger-2021",
+    "type": "shared_authors",
+    "note": "Christian Dorninger and Hanspeter Wieland are co-authors of both studies."
+  },
+  {
+    "from": "hickel-2022",
+    "to": "dorninger-2021",
+    "type": "follows_method",
+    "note": "Hickel et al. (2022) explicitly follow Dorninger et al. (2021)'s footprint-analysis approach.",
+    "evidence": "Hickel et al. (2022), Introduction."
+  }
+]
