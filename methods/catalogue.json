@@ -1,0 +1,22 @@
+[
+  {
+    "id": "dorninger-2021",
+    "authors": "Dorninger et al.",
+    "year": 2021,
+    "title": "Global patterns of ecologically unequal exchange: Implications for sustainability in the 21st century",
+    "category": "Ecological accounting",
+    "tags": [
+      "EEMRIO",
+      "MRIO",
+      "TiVA",
+      "piecewise SEM",
+      "materials",
+      "energy",
+      "land",
+      "labour"
+    ],
+    "summary": "Documents embodied biophysical flows, value-added comparisons and the 2015 structural equation model.",
+    "status": "Partial independent reconstruction; R verification pending",
+    "path": "dorninger/"
+  }
+]
