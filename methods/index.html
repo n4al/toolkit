@@ -197,6 +197,37 @@
     .explorer-result p { font-size:.9rem; }
     .explorer-result a { overflow-wrap:anywhere; }
     .explorer-empty { padding:16px; border:1px dashed #cfc6b8; }
+
+    /* Distinct palettes: analytical levels use solid accents; approaches use soft tints. */
+    .method-card { border-radius: 8px; }
+    .method-card .method-label { display:inline-block; padding:5px 9px; border-radius:4px; }
+    .method-card.level-card { border-top:5px solid var(--accent); }
+    .level-card .method-label { background:var(--accent); color:#fff; }
+    .level-card:nth-child(1) { --accent:#315d85; }
+    .level-card:nth-child(2) { --accent:#72529a; }
+    .level-card:nth-child(3) { --accent:#287568; }
+    .level-card:nth-child(4) { --accent:#a35b24; }
+    .method-card.approach-card { border-left:5px solid var(--accent); }
+    .approach-card .method-label { background:var(--tint); color:var(--accent); }
+    .approach-card:nth-child(1) { --accent:#8b4c23; --tint:#f8e9d9; }
+    .approach-card:nth-child(2) { --accent:#286d83; --tint:#e0f0f4; }
+    .approach-card:nth-child(3) { --accent:#735294; --tint:#eee6f5; }
+    .approach-card:nth-child(4) { --accent:#327247; --tint:#e5f1e7; }
+    /* Publication cards remain compact until readers choose to open them. */
+    .publication-card { padding:0; overflow:hidden; align-self:start; }
+    .publication-card details { height:100%; }
+    .publication-card summary { cursor:pointer; list-style:none; padding:22px 24px; }
+    .publication-card summary::-webkit-details-marker { display:none; }
+    .publication-card summary::after { content:'View details +'; display:block; color:#9d302a; font-size:.85rem; font-weight:700; margin-top:14px; }
+    .publication-card details[open] summary::after { content:'Hide details −'; }
+    .publication-card summary:hover,.publication-card summary:focus-visible { background:#f7f0e7; }
+    .publication-card .publication-detail { padding:0 24px 24px; border-top:1px solid #e1d8cb; }
+    .publication-card .publication-detail p { overflow-wrap:anywhere; }
+    .publication-card .publication-detail li { margin-bottom:8px; overflow-wrap:anywhere; }
+    .publication-card summary h3 { margin:10px 0 6px; }
+    .publication-card summary .publication-title { margin:0; }
+    @media (prefers-reduced-motion: no-preference) { .publication-card { transition:box-shadow .15s ease; } }
+    .publication-card:hover { box-shadow:0 4px 16px #35291d18; }
   </style>
 </head>
 
@@ -348,7 +379,7 @@
 
         <div class="methods-grid">
 
-          <article class="method-card">
+          <article class="method-card level-card">
 
             <span class="method-label">Level 01 / Explanation</span>
 
@@ -368,7 +399,7 @@
           </article>
 
 
-          <article class="method-card">
+          <article class="method-card level-card">
 
             <span class="method-label">Level 02 / Operationalisation</span>
 
@@ -389,7 +420,7 @@
           </article>
 
 
-          <article class="method-card">
+          <article class="method-card level-card">
 
             <span class="method-label">Level 03 / Implementation</span>
 
@@ -409,7 +440,7 @@
           </article>
 
 
-          <article class="method-card">
+          <article class="method-card level-card">
 
             <span class="method-label">Level 04 / Output</span>
 
@@ -476,7 +507,7 @@
         <div class="methods-grid">
 
 
-          <article class="method-card">
+          <article class="method-card approach-card">
 
             <span class="method-label">
               Approach 01 / Valuation
@@ -508,7 +539,7 @@
           </article>
 
 
-          <article class="method-card">
+          <article class="method-card approach-card">
 
             <span class="method-label">
               Approach 02 / Production accounting
@@ -538,7 +569,7 @@
           </article>
 
 
-          <article class="method-card">
+          <article class="method-card approach-card">
 
             <span class="method-label">
               Approach 03 / Marxian value and prices
@@ -570,7 +601,7 @@
           </article>
 
 
-          <article class="method-card">
+          <article class="method-card approach-card">
 
             <span class="method-label">
               Approach 04 / Ecological accounting
@@ -1136,15 +1167,19 @@
         );
         cards.replaceChildren();
         for (const item of filtered) {
-          const article = el('article', 'method-card');
-          article.append(el('span', 'method-label', item.category));
-          article.append(el('h3', '', `${item.authors} (${item.year})`));
-          article.append(el('p', '', item.title));
-          if (item.summary) article.append(el('p', '', item.summary));
-          article.append(el('p', 'methods-small', `Verification: ${item.status}`));
+          const article = el('article', 'method-card publication-card');
+          const details = el('details');
+          const summary = el('summary');
+          summary.append(el('span', 'method-label', item.category || 'Research study'));
+          summary.append(el('h3', '', `${item.authors} (${item.year})`));
+          summary.append(el('p', 'publication-title', item.title));
+          details.append(summary);
+          const body = el('div', 'publication-detail');
+          if (item.summary) body.append(el('p', '', item.summary));
+          body.append(el('p', 'methods-small', `Verification: ${item.status || 'Not specified'}`));
           const link = el('a', '', 'Read method entry →');
           link.href = item.path;
-          article.append(link);
+          body.append(link);
 
           const related = relationships.flatMap(relation => {
             const outgoing = relation.from === item.id;
@@ -1154,22 +1189,21 @@
             return study ? [{ relation, study, outgoing }] : [];
           });
           if (related.length) {
-            article.append(el('p', 'methods-small', 'Research connections:'));
+            body.append(el('p', 'methods-small', 'Research connections:'));
             const list = el('ul');
             for (const { relation, study, outgoing } of related) {
               const li = el('li');
-              const label = relation.type === 'shared_authors' ? 'Shared authors with' :
-                relation.type === 'follows_method' ? (outgoing ? 'Follows the method of' : 'Method followed by') :
-                relation.type === 'cites' ? (outgoing ? 'Cites' : 'Cited by') : 'Related to';
-              li.append(document.createTextNode(`${label}: `));
+              li.append(document.createTextNode(`${typeLabel(relation, outgoing)}: `));
               const a = el('a', '', `${study.authors} (${study.year})`);
               a.href = study.path;
               li.append(a);
               if (relation.note) li.append(el('span', 'methods-small', ` — ${relation.note}`));
               list.append(li);
             }
-            article.append(list);
+            body.append(list);
           }
+          details.append(body);
+          article.append(details);
           cards.append(article);
         }
         message.textContent = `${filtered.length} publication ${filtered.length === 1 ? 'entry' : 'entries'} shown.`;
