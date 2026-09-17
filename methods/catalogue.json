@@ -1,3 +1,4 @@
+
 [
   {
     "id": "dorninger-2021",
@@ -15,3 +16,7 @@
       "land",
       "labour"
     ],
+    "url": "dorninger/",
+    "status": "Corrected R model executed — close fit agreement; exact replication unresolved"
+  }
+]
