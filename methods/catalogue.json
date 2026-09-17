@@ -1,4 +1,3 @@
-
 [
   {
     "id": "dorninger-2021",
@@ -28,6 +27,31 @@
         "id": "hickel-2024",
         "relationship": "cited_by",
         "note": "The 2024 labour unequal-exchange study cites Dorninger et al. (2021)."
+      }
+    ]
+  },
+  {
+    "id": "hickel-2022",
+    "authors": "Hickel et al.",
+    "year": 2022,
+    "title": "Imperialist appropriation in the world economy: Drain from the global South through unequal exchange, 1990–2015",
+    "category": "Ecological accounting",
+    "tags": [
+      "unequal exchange",
+      "resource appropriation",
+      "materials",
+      "energy",
+      "land",
+      "labour"
+    ],
+    "path": "hickel-2022/",
+    "summary": "Examines resource appropriation through unequal exchange in the world economy over 1990–2015.",
+    "status": "Methodological profile under development; replication not attempted",
+    "related_studies": [
+      {
+        "id": "dorninger-2021",
+        "relationship": "shared_authors",
+        "note": "Christian Dorninger and Hanspeter Wieland are co-authors of both studies."
       }
     ]
   }
