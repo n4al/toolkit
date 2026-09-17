@@ -2,351 +2,150 @@
 
 Thank you for your interest in contributing to the Unequal Exchange Toolkit.
 
-The Toolkit is an open research initiative for investigating unequal exchange, dependency and possibilities for economic transformation. It brings together methodological documentation, data resources and research tools to make assumptions, calculations and interpretations more transparent and accessible.
+The Toolkit is an open research initiative that brings together methodological documentation, data resources and research tools for investigating unequal exchange, dependency and possibilities for economic transformation.
 
-Contributions are welcome from researchers, students, practitioners, developers and others interested in the project. You do not need programming experience to contribute.
+We welcome contributions from researchers, students, practitioners, developers and anyone interested in improving the resource. You do not need programming experience to participate.
 
-This guide explains how to participate, what information to provide and how contributions are reviewed.
+## How you can contribute
 
----
+There are several ways to get involved.
 
-## 1. Ways to contribute
+**Methods Library:** Suggest published studies, document research methods, identify connections between publications, clarify assumptions or propose corrections to existing entries.
 
-There are several ways to help develop the Toolkit.
+**Data Catalogue:** Recommend datasets, document their coverage and variables, identify limitations or investigate comparability between sources.
 
-### Research and methodological documentation
+**Research and modelling:** Help develop calculation procedures, test assumptions, document models or contribute reproducible research workflows.
 
-* Suggest publications for inclusion in the Methods Library.
-* Document the theoretical assumptions and methodological procedures of published studies.
-* Identify relationships between studies, including shared datasets, methodological adaptations and reuse of published results.
-* Identify limitations, unresolved questions or differences in interpretation.
-* Suggest corrections to existing entries.
+**Website and technical development:** Improve the code, design, accessibility, documentation or usability of the Toolkit.
 
-### Data documentation
+You can also contribute by identifying an error, raising a question or suggesting an improvement. Contributions do not need to be complete research projects.
 
-* Recommend relevant datasets and sources.
-* Document variables, geographical coverage and time periods.
-* Identify access conditions, licensing restrictions and data-quality concerns.
-* Investigate comparability between sources.
+## Getting started
 
-### Modelling and research instruments
+The easiest way to contribute is to [open a GitHub Issue](https://github.com/unequal-exchange-toolkit/toolkit/issues/new).
 
-* Develop or review calculation procedures.
-* Test assumptions and investigate alternative scenarios.
-* Contribute reproducible code and computational workflows.
-* Help distinguish empirical findings from hypothetical modelling exercises.
+Use an issue to suggest a publication, report a problem, propose an improvement or discuss a contribution before beginning substantial work.
 
-### Technical development
+If you are comfortable using GitHub, you can also submit changes through a pull request.
 
-* Improve the website, navigation and accessibility.
-* Develop visualisations and interactive research tools.
-* Improve documentation and reproducibility.
-* Report bugs or suggest new features.
+You do not need to edit the website's HTML or JSON files to suggest a study or contribute methodological documentation.
 
-Critical feedback is also a contribution. You do not need to have a complete solution to identify a problem or raise a useful research question.
-
----
-
-## 2. How to get started
-
-The simplest way to contribute is to open a GitHub Issue:
-
-[Open an issue](https://github.com/unequal-exchange-toolkit/toolkit/issues/new)
-
-Use an issue to suggest a publication, identify an error, propose an improvement or discuss an idea before undertaking substantial work.
-
-Please provide enough information for others to understand your proposal. For research contributions, include a publication reference or other relevant source wherever possible.
-
-If you are comfortable working with GitHub, you may also submit changes through a pull request.
-
-You do not need to edit HTML, JSON or other website files simply to suggest a study or provide methodological documentation.
-
----
-
-# 3. Contributing to the Methods Library
+## Contributing a study to the Methods Library
 
 The Methods Library documents how published research investigates unequal exchange and related questions.
 
-Its purpose is not simply to collect findings. It aims to clarify the relationship between theoretical explanations, estimation strategies, computational techniques, data and measured quantities.
+It is designed to make the relationships between theoretical explanations, estimation strategies, computational techniques and measured quantities clearer.
 
-Contributors can suggest a study, provide a methodological profile, identify research connections or correct an existing entry.
+You can contribute in several ways, depending on how much time you have.
 
-**Independent replication is not required to contribute a methodological profile.**
+### Suggest a publication
 
-However, documentation, implementation and verification must be clearly distinguished.
+If you know of a relevant study, you can suggest it without writing a complete methodological profile.
 
-## 3.1 Suggesting a publication
+Please provide the title, authors, publication year and DOI or stable link, along with a short explanation of why it may be relevant.
 
-If you want to recommend a study but do not have time to document its methodology, that is still useful.
+If the study builds on or relates to an existing entry, you can mention that too.
 
-Open a GitHub Issue and provide:
+### Document a study
 
-* The publication's title and authors.
-* Publication year.
-* DOI or a stable URL, if available.
-* A brief explanation of its relevance to the Toolkit.
-* Any known relationship to studies already in the library.
+If you would like to contribute a more substantial entry, please describe the study's methodology using the four analytical levels adopted by the library.
 
-A publication suggestion is not automatically a completed methodological entry.
+**1. Theoretical mechanism**
 
-## 3.2 Documenting a published study
+What does the study seek to explain? What theoretical argument or mechanism does it propose?
 
-A methodological profile should describe the study on its own terms.
+**2. Estimation strategy**
 
-Contributors should distinguish four analytical levels.
+How does the study translate its research question into something that can be investigated or estimated?
 
-These levels are not competing categories. A single study may involve all four.
+**3. Computational technique**
 
-### Level 01 — Theoretical mechanism
+What mathematical, statistical or accounting procedures does it use?
 
-**What is proposed to explain the phenomenon under investigation?**
+**4. Measured quantities**
 
-Describe the study's theoretical argument and the mechanism it proposes.
+What does the study actually calculate or produce, and in which units?
 
-For unequal-exchange research, this might concern international wage differences, production conditions, value transfer or ecological appropriation.
+These levels are not competing categories. A study may involve all four, and they should be described in relation to its actual research design.
 
-Use the authors' own formulation wherever possible. Do not attribute a mechanism to a study simply because it belongs to a particular research tradition.
+For studies that do not estimate unequal-exchange flows directly, describe their own research questions and methods rather than forcing them into an unequal-exchange framework.
 
-If a study does not propose an unequal-exchange mechanism, explain its actual theoretical purpose rather than forcing it into that category.
+The [Methods Library](https://unequal-exchange-toolkit.github.io/toolkit/methods/) explains the four levels in more detail.
 
-### Level 02 — Estimation strategy
+Where possible, also identify the study's data sources, geographical and temporal coverage, key assumptions, limitations and interpretation of results.
 
-**How is the research question translated into something that can be investigated?**
+Please include page numbers, section references or links to supporting documentation. If something cannot be established from the available sources, it is fine to identify it as unresolved.
 
-Describe the study's approach to operationalisation.
+You do not need to reproduce a study's calculations to document its methodology.
 
-Examples might include embodied-flow accounting, counterfactual valuation or comparisons involving theoretically specified prices.
+### Identify connections between studies
 
-Identify the relevant assumptions and comparison procedures.
+The library also documents how publications relate to one another.
 
-Do not treat an estimation strategy as interchangeable with the theoretical mechanism it is intended to investigate.
+You can contribute by identifying shared authorship, citations, methodological adaptations, dataset reuse or the use of results and parameters from earlier studies.
 
-### Level 03 — Computational technique
+Please explain the specific connection and provide a supporting reference.
 
-**How are the relevant quantities calculated or estimated?**
+For example, citing another paper does not necessarily mean that a study reuses its dataset or follows its method. These relationships should be distinguished wherever the evidence allows.
 
-Identify the mathematical, statistical or accounting procedures used.
+### Suggest a correction
 
-Examples may include multiregional input–output analysis, environmentally extended accounting, statistical modelling or other specified procedures.
+If an existing entry contains an error, an unclear description or an unsupported claim, please open an issue identifying the relevant entry and explaining the proposed correction.
 
-Where available, document model versions, equations, software, code and important transformations.
+Where possible, include a reference to the original publication or supporting documentation.
 
-Distinguish techniques used directly by the study from calculations or datasets inherited from earlier research.
+Corrections and critical feedback are valuable contributions to the library.
 
-### Level 04 — Measured quantities
+## Documentation and verification
 
-**What does the calculation actually produce?**
+The Toolkit distinguishes between documenting published research and independently reproducing its calculations.
 
-Identify the outputs and their units.
+A methodological profile may accurately describe a published study without attempting replication.
 
-These may include monetary estimates, labour hours, tonnes of materials, land area, energy or other quantities.
+If you contribute code, calculations or replication work, please explain what was implemented, which data and assumptions were used, what was checked and what remains unresolved.
 
-Explain the geographical and temporal scope of the estimates.
+Successful execution of code or close agreement with published results should not automatically be described as exact replication.
 
-A measured flow should not automatically be presented as proof of every theoretical mechanism associated with it.
+Verification statuses should reflect the work actually undertaken.
 
----
+## Research standards
 
-## 3.3 Additional information for a methodological profile
+The Toolkit aims to document research accurately and make methodological differences visible.
 
-Alongside the four analytical levels, contributors should provide the following information where available.
+Contributions should identify their sources, explain important assumptions and preserve the geographical and temporal boundaries of the evidence.
 
-| Field                 | Information requested                                                     |
-| --------------------- | ------------------------------------------------------------------------- |
-| Publication           | Authors, title, year, journal or publisher, DOI                           |
-| Research question     | What the study investigates                                               |
-| Research approach     | The most appropriate navigational category                                |
-| Data                  | Sources, versions, variables and transformations                          |
-| Scope                 | Countries, sectors, years and production boundaries                       |
-| Calculation procedure | Equations, modelling steps and relevant assumptions                       |
-| Limitations           | Limitations identified by the authors and separately identified questions |
-| Interpretation        | What the authors conclude from their results                              |
-| Research connections  | Relationships with other documented studies                               |
-| Verification status   | What has and has not been independently checked                           |
-| References            | Supporting publications, datasets, code and documentation                 |
+Please distinguish between claims made by the original authors, your own interpretation and findings independently established through work undertaken for the Toolkit.
 
-Not every field will be applicable to every study.
+Different studies may investigate different mechanisms or produce estimates in different units. These should not be treated as directly comparable without an appropriate justification.
 
-If important information cannot be established from the available sources, identify it as missing or unresolved rather than filling the gap through inference.
+Constructive disagreement is welcome. Where interpretations differ, explain the disagreement and the evidence relevant to it.
 
-### Evidence and page references
+## Data, copyright and permissions
 
-Please support substantive methodological descriptions with references to the original publication or its supplementary materials.
+Please only share materials that you have permission to distribute.
 
-Page numbers, section numbers, equation numbers and links to documentation are especially helpful.
+Do not upload confidential, personally identifiable or otherwise restricted research material to the public repository.
 
-Distinguish between:
+For published research, provide references and links rather than uploading copyrighted articles without permission.
 
-* Statements explicitly made by the authors.
-* Descriptions reconstructed from the published methodology.
-* Interpretations or questions introduced by the contributor.
+Dataset contributions should identify their sources and any relevant licensing or access restrictions.
 
-Do not present an inference as a documented statement by the authors.
+## Review and publication
 
----
+Contributions are reviewed before they are incorporated into the published Toolkit.
 
-## 3.4 Research connections
+Review focuses on relevance, accuracy, source attribution, methodological clarity and transparency about assumptions and verification status.
 
-The Methods Library also records relationships between publications.
+You may be asked to clarify a description, provide additional evidence or revise a proposed entry.
 
-Examples include:
+Not every suggestion will be included, and some contributions may require further discussion or development.
 
-* Shared authorship.
-* Citation of an earlier study.
-* Following or adapting a published method.
-* Reuse of a dataset.
-* Reuse of a derived parameter.
+Contributors should receive appropriate recognition for substantive work. Please indicate how you would like to be credited when submitting a contribution.
 
-A connection should identify both publications, explain the relationship and provide supporting evidence.
+## Questions or ideas?
 
-**Citation alone does not establish data or methodological reuse.**
-
-Likewise, studies that use the same general computational technique do not necessarily share the same dataset, assumptions or estimation strategy.
-
-Contributors are encouraged to identify specific relationships rather than treating all connections as equivalent.
-
----
-
-## 3.5 Documentation, replication and verification
-
-The Toolkit distinguishes several forms of research activity.
-
-**Source-based documentation:** The published methodology has been examined and described, but the calculations have not necessarily been reproduced.
-
-**Implementation or reconstruction:** Some or all of the published procedures have been implemented independently.
-
-**Verification:** Specific calculations, outputs or results have been checked against the published study or other relevant evidence.
-
-These activities should not be conflated.
-
-Running code successfully does not, by itself, establish exact replication. Close agreement with published results does not establish that all underlying procedures, data transformations or assumptions have been reproduced.
-
-Contributors should describe precisely what was attempted, what was checked and what remains unresolved.
-
-Do not describe a study as independently replicated unless the supporting work justifies that claim.
-
----
-
-# 4. Contributing to the Data Catalogue
-
-Data contributions should identify:
-
-* The source and responsible organisation.
-* The dataset name and version, where applicable.
-* Geographical and temporal coverage.
-* Variables, units and definitions.
-* Access arrangements and licensing conditions.
-* Known limitations or comparability issues.
-
-Please distinguish the original dataset from any transformations undertaken by the Toolkit.
-
-Do not assume that national statistics adequately represent subnational conditions or that datasets with similar variable names measure identical concepts.
-
-Do not upload restricted datasets without the necessary permissions.
-
----
-
-# 5. Contributing models, calculations and code
-
-Computational contributions should be accompanied by sufficient documentation for another person to understand and, where possible, reproduce the work.
-
-Please identify:
-
-* The research question or purpose.
-* Data inputs and their sources.
-* Assumptions and parameter choices.
-* Calculation steps.
-* Software and relevant dependencies.
-* Expected outputs.
-* Tests or verification undertaken.
-* Known limitations.
-
-Clearly distinguish a published method from an independent adaptation or experimental model.
-
-Hypothetical scenarios should be labelled as such and should not be presented as empirical findings.
-
-Where possible, avoid unnecessary changes to unrelated parts of the Toolkit when submitting code.
-
----
-
-# 6. Research integrity and responsible interpretation
-
-The Toolkit aims to document research accurately, including differences between approaches.
-
-Contributions should:
-
-* Attribute claims, data and methods to their sources.
-* Preserve relevant geographical and temporal boundaries.
-* Distinguish theoretical propositions from empirical measurements.
-* Explain assumptions and limitations.
-* Avoid combining estimates that measure different phenomena without justification.
-* Distinguish published findings from independent interpretations.
-* State verification status accurately.
-
-Different approaches to unequal exchange may investigate different mechanisms or produce results in different units.
-
-The purpose of the library is to make these differences visible, not to manufacture comparability where it has not been established.
-
-Constructive disagreement is welcome. Where interpretations are contested, explain the relevant disagreement and its evidential basis.
-
----
-
-# 7. Copyright, data protection and permissions
-
-Please do not upload confidential, personally identifiable or otherwise restricted research material to the public repository.
-
-Before sharing third-party materials, check the applicable permissions and licensing conditions.
-
-Prefer references, DOI links and concise attributed descriptions over reproducing substantial portions of copyrighted publications.
-
-Contributors should only submit code, data and other materials that they are permitted to share.
-
----
-
-# 8. How contributions are reviewed
-
-Contributions are reviewed before inclusion in the published Toolkit.
-
-Review may consider:
-
-* Relevance to the project's scope.
-* Accuracy of source attribution.
-* Clarity of methodological documentation.
-* Appropriate distinctions between theory, estimation, technique and outputs.
-* Transparency about assumptions and limitations.
-* Accuracy of replication or verification claims.
-* Compatibility with the existing research resources and website.
-
-A contributor may be asked to clarify a claim, provide a source or revise an entry.
-
-Submission does not guarantee inclusion.
-
-Where appropriate, proposed contributions may remain open for discussion or be incorporated in stages.
-
-The review process is intended to maintain the reliability and usefulness of the resource while allowing it to develop collaboratively.
-
----
-
-# 9. Recognition and attribution
-
-Contributors should receive appropriate recognition for substantive work.
-
-When submitting a contribution, please indicate how you would like to be credited, if applicable.
-
-Attribution arrangements may depend on the nature of the contribution and the project's developing editorial practices.
-
-Publication authors, dataset creators and other original sources must remain properly attributed regardless of who documents their work for the Toolkit.
-
----
-
-# 10. Questions, corrections and suggestions
-
-If you are unsure where your contribution belongs, open an issue and explain what you would like to contribute.
-
-You can also use GitHub Issues to report factual errors, broken links, accessibility problems or unclear documentation.
-
-[Visit the repository](https://github.com/unequal-exchange-toolkit/toolkit)
+If you are unsure where your contribution belongs, simply open an issue and describe what you have in mind.
 
 [Open a GitHub Issue](https://github.com/unequal-exchange-toolkit/toolkit/issues/new)
 
-The Unequal Exchange Toolkit is an evolving open research initiative. Its documentation and contribution processes will develop as the project grows.
+[Visit the Unequal Exchange Toolkit repository](https://github.com/unequal-exchange-toolkit/toolkit)
