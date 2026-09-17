@@ -181,6 +181,22 @@
     .catalogue-controls input, .catalogue-controls select { padding:10px; border:1px solid #cfc6b8; background:#fffdf8; color:inherit; max-width:100%; }
     .catalogue-controls input { flex:1 1 220px; }
     .method-card a { overflow-wrap:anywhere; }
+
+    /* Relationship explorer */
+    .explorer { border:1px solid #cfc6b8; background:#fffdf8; padding:24px; margin:30px 0; }
+    .explorer h3 { margin-top:0; }
+    .explorer-controls { display:flex; flex-wrap:wrap; gap:12px; align-items:end; margin:18px 0; }
+    .explorer-controls label { display:grid; gap:6px; font-weight:700; font-size:.88rem; flex:1 1 220px; }
+    .explorer-controls input,.explorer-controls select { width:100%; min-width:0; box-sizing:border-box; padding:10px; border:1px solid #cfc6b8; background:white; color:inherit; }
+    .explorer button { cursor:pointer; border:1px solid #9d302a; padding:10px 14px; color:#9d302a; background:#fff; font-weight:700; }
+    .explorer button:hover,.explorer button:focus-visible { background:#f5e7e2; }
+    .explorer-results { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr)); gap:14px; }
+    .explorer-result { border:1px solid #cfc6b8; border-left:4px solid #9d302a; padding:16px; background:#fff; }
+    .explorer-result h4 { margin:8px 0; }
+    .explorer-type { font-size:.76rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:#9d302a; }
+    .explorer-result p { font-size:.9rem; }
+    .explorer-result a { overflow-wrap:anywhere; }
+    .explorer-empty { padding:16px; border:1px dashed #cfc6b8; }
   </style>
 </head>
 
@@ -287,6 +303,26 @@
         </div>
         <p id="publication-message" class="methods-small" role="status" aria-live="polite">Loading publication entries…</p>
         <div id="publication-cards" class="methods-grid" aria-label="Publication entries"></div>
+
+        <section class="explorer" id="relationship-explorer" aria-labelledby="explorer-heading">
+          <p class="methods-kicker">Explore research connections</p>
+          <h3 id="explorer-heading">How are these studies connected?</h3>
+          <p>Choose a publication or search connections by study, relationship type, or evidence. Connections are recorded once and shown from either study's perspective.</p>
+          <div class="explorer-controls">
+            <label for="explorer-study">Focus on a publication
+              <select id="explorer-study"><option value="">All publications</option></select>
+            </label>
+            <label for="explorer-type">Connection type
+              <select id="explorer-type"><option value="">All connection types</option></select>
+            </label>
+            <label for="explorer-search">Search connections
+              <input id="explorer-search" type="search" placeholder="Author, study, method, evidence…">
+            </label>
+            <button id="explorer-reset" type="button">Clear filters</button>
+          </div>
+          <p id="explorer-status" class="methods-small" role="status" aria-live="polite">Loading research connections…</p>
+          <div id="explorer-results" class="explorer-results" aria-label="Research connections"></div>
+        </section>
         <noscript><p><a href="dorninger/">Dorninger et al. (2021): Global patterns of ecologically unequal exchange</a> — partial independent reconstruction, verification ongoing.</p></noscript>
       </div>
     </section>
@@ -1015,6 +1051,13 @@
       const message = document.getElementById('publication-message');
       const search = document.getElementById('publication-search');
       const category = document.getElementById('publication-category');
+      const explorerStudy = document.getElementById('explorer-study');
+      const explorerType = document.getElementById('explorer-type');
+      const explorerSearch = document.getElementById('explorer-search');
+      const explorerResults = document.getElementById('explorer-results');
+      const explorerStatus = document.getElementById('explorer-status');
+      const explorerReset = document.getElementById('explorer-reset');
+      let relationshipsReady = false;
       let entries = [];
       let relationships = [];
       const el = (tag, className, text) => {
@@ -1023,6 +1066,66 @@
         if (text !== undefined) node.textContent = text;
         return node;
       };
+      const studyName = item => `${item.authors} (${item.year})`;
+      const typeLabel = (relation, outgoing) => relation.type === 'shared_authors' ? 'Shared authors with' :
+        relation.type === 'follows_method' ? (outgoing ? 'Follows the method of' : 'Method followed by') :
+        relation.type === 'cites' ? (outgoing ? 'Cites' : 'Cited by') :
+        relation.type === 'uses_data' ? (outgoing ? 'Uses data from' : 'Data used by') :
+        relation.type.replace(/_/g, ' ');
+      function renderExplorer() {
+        explorerResults.replaceChildren();
+        if (!relationshipsReady) return;
+        const byId = new Map(entries.map(item => [item.id, item]));
+        const focus = explorerStudy.value;
+        const kind = explorerType.value;
+        const query = explorerSearch.value.trim().toLowerCase();
+        const matches = [];
+        for (const relation of relationships) {
+          const from = byId.get(relation.from), to = byId.get(relation.to);
+          if (!from || !to) continue;
+          if (kind && relation.type !== kind) continue;
+          if (focus && relation.from !== focus && relation.to !== focus) continue;
+          const searchable = [from.authors, from.title, from.year, to.authors, to.title, to.year,
+            relation.type, relation.note, relation.evidence].join(' ').toLowerCase();
+          if (query && !searchable.includes(query)) continue;
+          matches.push({relation, from, to});
+        }
+        explorerStatus.textContent = `${matches.length} connection ${matches.length === 1 ? 'record' : 'records'} shown${focus ? ` for ${studyName(byId.get(focus))}` : ''}.`;
+        if (!matches.length) {
+          explorerResults.append(el('p', 'explorer-empty', 'No documented connections match these filters. Try clearing the filters.'));
+          return;
+        }
+        for (const {relation, from, to} of matches) {
+          const outgoing = !focus || relation.from === focus;
+          const source = focus ? byId.get(focus) : from;
+          const target = focus ? (outgoing ? to : from) : to;
+          const card = el('article', 'explorer-result');
+          card.append(el('span', 'explorer-type', typeLabel(relation, outgoing)));
+          const heading = el('h4');
+          const sourceLink = el('a', '', studyName(source)); sourceLink.href = source.path;
+          const targetLink = el('a', '', studyName(target)); targetLink.href = target.path;
+          heading.append(sourceLink, document.createTextNode(' ↔ '), targetLink);
+          card.append(heading);
+          if (relation.note) card.append(el('p', '', relation.note));
+          if (relation.evidence) card.append(el('p', 'methods-small', `Source: ${relation.evidence}`));
+          const focusButton = el('button', '', `Explore ${studyName(target)}`);
+          focusButton.type = 'button';
+          focusButton.addEventListener('click', () => {
+            explorerStudy.value = target.id;
+            renderExplorer();
+            document.getElementById('relationship-explorer').scrollIntoView({behavior:'smooth',block:'start'});
+          });
+          card.append(focusButton);
+          explorerResults.append(card);
+        }
+      }
+      explorerStudy.addEventListener('change', renderExplorer);
+      explorerType.addEventListener('change', renderExplorer);
+      explorerSearch.addEventListener('input', renderExplorer);
+      explorerReset.addEventListener('click', () => {
+        explorerStudy.value = ''; explorerType.value = ''; explorerSearch.value = '';
+        renderExplorer();
+      });
       function render() {
         const query = search.value.trim().toLowerCase();
         const filtered = entries.filter(item =>
@@ -1084,6 +1187,11 @@
             option.value = name;
             category.append(option);
           }
+          for (const item of entries) {
+            const option = el('option', '', studyName(item));
+            option.value = item.id;
+            explorerStudy.append(option);
+          }
           search.addEventListener('input', render);
           category.addEventListener('change', render);
           render();
@@ -1098,16 +1206,25 @@
             .then(links => {
               if (!Array.isArray(links)) throw new Error('Relationships must be a JSON array');
               relationships = links.filter(link => link && link.from && link.to && link.type);
+              for (const type of [...new Set(relationships.map(link => link.type))].sort()) {
+                const option = el('option', '', type.replace(/_/g, ' '));
+                option.value = type;
+                explorerType.append(option);
+              }
+              relationshipsReady = true;
               render();
+              renderExplorer();
             })
             .catch(error => {
               console.warn('Research connections unavailable; publication catalogue still works:', error);
               message.textContent = `${entries.length} publication ${entries.length === 1 ? 'entry' : 'entries'} shown. Research connections temporarily unavailable.`;
+              explorerStatus.textContent = 'Research connections temporarily unavailable. Check that methods/relationships.json exists on GitHub Pages.';
             });
         })
         .catch(error => {
           console.error('Methods catalogue loading error:', error);
           message.textContent = 'The catalogue could not be loaded. You can still open the Dorninger entry below.';
+          explorerStatus.textContent = 'The publication catalogue could not be loaded.';
           cards.replaceChildren();
           const fallback = el('p');
           const link = el('a', '', 'Dorninger et al. (2021) — method entry →');
