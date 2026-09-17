@@ -1016,97 +1016,74 @@
       const search = document.getElementById('publication-search');
       const category = document.getElementById('publication-category');
       let entries = [];
+      let relationships = [];
       const el = (tag, className, text) => {
         const node = document.createElement(tag);
         if (className) node.className = className;
         if (text !== undefined) node.textContent = text;
         return node;
       };
-  function render() {
-  const query = search.value.trim().toLowerCase();
-
-  const filtered = entries.filter(item =>
-    (!category.value || item.category === category.value) &&
-    [
-      item.title,
-      item.authors,
-      item.year,
-      item.category,
-      item.summary,
-      item.status,
-      ...(item.tags || [])
-    ].join(' ').toLowerCase().includes(query)
-  );
-
-  cards.replaceChildren();
-
-  for (const item of filtered) {
-    const article = el('article', 'method-card');
-
-    article.append(el('span', 'method-label', item.category));
-    article.append(el('h3', '', `${item.authors} (${item.year})`));
-    article.append(el('p', '', item.title));
-
-    if (item.summary) {
-      article.append(el('p', '', item.summary));
-    }
-
-    article.append(
-      el('p', 'methods-small', `Verification: ${item.status}`)
-    );
-
-    const link = el('a', '', 'Read method entry →');
-    link.href = item.path;
-    article.append(link);
-
-    // Display related studies using their catalogue records.
-    const related = (item.related_studies || [])
-      .map(relation => ({
-        relation,
-        study: entries.find(entry => entry.id === relation.id)
-      }))
-      .filter(result => result.study);
-
-    if (related.length > 0) {
-      const heading = el('p', 'methods-small', 'Related studies:');
-      article.append(heading);
-
-      const list = el('ul');
-
-      for (const { relation, study } of related) {
-        const listItem = el('li');
-        const relatedLink = el(
-          'a',
-          '',
-          `${study.authors} (${study.year})`
+      function render() {
+        const query = search.value.trim().toLowerCase();
+        const filtered = entries.filter(item =>
+          (!category.value || item.category === category.value) &&
+          [item.title, item.authors, item.year, item.category, item.summary, item.status,
+           ...(item.tags || [])].join(' ').toLowerCase().includes(query)
         );
+        cards.replaceChildren();
+        for (const item of filtered) {
+          const article = el('article', 'method-card');
+          article.append(el('span', 'method-label', item.category));
+          article.append(el('h3', '', `${item.authors} (${item.year})`));
+          article.append(el('p', '', item.title));
+          if (item.summary) article.append(el('p', '', item.summary));
+          article.append(el('p', 'methods-small', `Verification: ${item.status}`));
+          const link = el('a', '', 'Read method entry →');
+          link.href = item.path;
+          article.append(link);
 
-        relatedLink.href = study.path;
-        listItem.append(relatedLink);
-
-        if (relation.note) {
-          listItem.append(
-            el('span', 'methods-small', ` — ${relation.note}`)
-          );
+          const related = relationships.flatMap(relation => {
+            const outgoing = relation.from === item.id;
+            const incoming = relation.to === item.id;
+            if (!outgoing && !incoming) return [];
+            const study = entries.find(entry => entry.id === (outgoing ? relation.to : relation.from));
+            return study ? [{ relation, study, outgoing }] : [];
+          });
+          if (related.length) {
+            article.append(el('p', 'methods-small', 'Research connections:'));
+            const list = el('ul');
+            for (const { relation, study, outgoing } of related) {
+              const li = el('li');
+              const label = relation.type === 'shared_authors' ? 'Shared authors with' :
+                relation.type === 'follows_method' ? (outgoing ? 'Follows the method of' : 'Method followed by') :
+                relation.type === 'cites' ? (outgoing ? 'Cites' : 'Cited by') : 'Related to';
+              li.append(document.createTextNode(`${label}: `));
+              const a = el('a', '', `${study.authors} (${study.year})`);
+              a.href = study.path;
+              li.append(a);
+              if (relation.note) li.append(el('span', 'methods-small', ` — ${relation.note}`));
+              list.append(li);
+            }
+            article.append(list);
+          }
+          cards.append(article);
         }
-
-        list.append(listItem);
+        message.textContent = `${filtered.length} publication ${filtered.length === 1 ? 'entry' : 'entries'} shown.`;
       }
-
-      article.append(list);
-    }
-
-    cards.append(article);
-  }
-
-  message.textContent =
-    `${filtered.length} publication ${filtered.length === 1 ? 'entry' : 'entries'} shown.`;
-}
-      fetch('./catalogue.json', { cache: 'no-cache' })
-        .then(response => { if (!response.ok) throw new Error(`HTTP ${response.status}`); return response.json(); })
-        .then(data => {
-          if (!Array.isArray(data)) throw new Error('Catalogue must be an array');
-          entries = data.filter(item => item && item.title && item.authors && item.year && item.path);
+      Promise.all([
+        fetch('./catalogue.json', { cache: 'no-cache' }).then(response => {
+          if (!response.ok) throw new Error(`Catalogue HTTP ${response.status}`);
+          return response.json();
+        }),
+        fetch('./relationships.json', { cache: 'no-cache' }).then(response => {
+          if (!response.ok) throw new Error(`Relationships HTTP ${response.status}`);
+          return response.json();
+        })
+      ])
+        .then(([data, links]) => {
+          if (!Array.isArray(data) || !Array.isArray(links)) throw new Error('Expected JSON arrays');
+          entries = data.filter(item => item && item.id && item.title && item.authors && item.year && item.path);
+          relationships = links.filter(link => link && link.from && link.to && link.type);
           for (const name of [...new Set(entries.map(item => item.category).filter(Boolean))].sort()) {
             const option = el('option', '', name);
             option.value = name;
@@ -1116,7 +1093,8 @@
           category.addEventListener('change', render);
           render();
         })
-        .catch(() => {
+        .catch(error => {
+          console.error('Methods library loading error:', error);
           message.textContent = 'The catalogue could not be loaded. You can still open the Dorninger entry below.';
           const fallback = el('p');
           const link = el('a', '', 'Dorninger et al. (2021) — method entry →');
