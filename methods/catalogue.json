@@ -17,6 +17,18 @@
       "labour"
     ],
     "path": "dorninger/",
-    "status": "Corrected R model executed — close fit agreement; exact replication unresolved"
+    "status": "Corrected R model executed — close fit agreement; exact replication unresolved",
+    "related_studies": [
+      {
+        "id": "hickel-2022",
+        "relationship": "shared_authors",
+        "note": "Christian Dorninger and Hanspeter Wieland are co-authors of both studies."
+      },
+      {
+        "id": "hickel-2024",
+        "relationship": "cited_by",
+        "note": "The 2024 labour unequal-exchange study cites Dorninger et al. (2021)."
+      }
+    ]
   }
 ]
