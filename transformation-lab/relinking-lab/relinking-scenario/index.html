@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="An experimental research tool for investigating how reorganising economic relationships might produce and reproduce collective capacities.">
+  <title>Relinking Scenario Builder | Unequal Exchange Toolkit</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+
+  <style>
+    /* Page-specific styles. The site's shared stylesheet remains unchanged. */
+
+    .lab-intro {
+      max-width: 790px;
+    }
+
+    .lab-intro h1 {
+      max-width: 850px;
+    }
+
+    .lab-kicker {
+      color: #9d302a;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .lab-note {
+      background: #fffdf8;
+      border-left: 4px solid #9d302a;
+      padding: 18px 22px;
+      margin: 26px 0;
+    }
+
+    .lab-note p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lab-section-heading {
+      max-width: 790px;
+      margin-bottom: 28px;
+    }
+
+    .lab-section-heading p {
+      color: #645e56;
+    }
+
+    .actor-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .actor {
+      background: #fffdf8;
+      border: 1px solid #cfc6b8;
+      padding: 24px;
+    }
+
+    .actor-number {
+      color: #9d302a;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .actor h3 {
+      margin: 10px 0;
+      font-size: 1.2rem;
+      line-height: 1.3;
+    }
+
+    .actor p {
+      color: #645e56;
+      font-size: 0.94rem;
+      margin-bottom: 0;
+    }
+
+    .lab-form {
+      background: #fffdf8;
+      border: 1px solid #cfc6b8;
+      padding: clamp(20px, 4vw, 38px);
+    }
+
+    .lab-form h3 {
+      margin-top: 0;
+    }
+
+    .lab-field {
+      margin: 0 0 26px;
+    }
+
+    .lab-field label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 9px;
+    }
+
+    .lab-field select {
+      display: block;
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #a9a094;
+      border-radius: 2px;
+      background: #ffffff;
+      color: #242321;
+      font: inherit;
+    }
+
+    .lab-field select:focus,
+    .lab-button:focus-visible {
+      outline: 3px solid #9d302a;
+      outline-offset: 3px;
+    }
+
+    .field-help {
+      color: #645e56;
+      font-size: 0.88rem;
+      margin: 8px 0 0;
+    }
+
+    .lab-button {
+      display: inline-block;
+      border: 1px solid #9d302a;
+      background: #9d302a;
+      color: #ffffff;
+      padding: 13px 20px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .lab-button:hover {
+      background: #76231e;
+    }
+
+    .lab-button.secondary {
+      background: transparent;
+      color: #9d302a;
+    }
+
+    .lab-button.secondary:hover {
+      background: #f5e8e3;
+    }
+
+    .lab-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .lab-output {
+      margin-top: 32px;
+      padding: clamp(20px, 4vw, 38px);
+      border: 2px solid #9d302a;
+      background: #fffdf8;
+    }
+
+    .lab-output[hidden] {
+      display: none;
+    }
+
+    .lab-status {
+      display: inline-block;
+      color: #9d302a;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lab-output h3 {
+      margin: 12px 0 8px;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+    }
+
+    .lab-output h4 {
+      margin: 28px 0 10px;
+    }
+
+    .lab-output ul {
+      padding-left: 22px;
+    }
+
+    .lab-output li {
+      margin-bottom: 9px;
+    }
+
+    .lab-summary {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px 0;
+    }
+
+    .lab-summary th,
+    .lab-summary td {
+      border-bottom: 1px solid #cfc6b8;
+      padding: 12px 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    .lab-summary th {
+      width: 34%;
+    }
+
+    .lab-warning {
+      border: 1px solid #cfc6b8;
+      background: #f4f0e8;
+      padding: 18px;
+      margin-top: 26px;
+    }
+
+    .lab-warning p:last-child {
+      margin-bottom: 0;
+    }
+
+    .lab-small {
+      color: #645e56;
+      font-size: 0.88rem;
+    }
+
+    .lab-method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .lab-method-grid article {
+      background: #fffdf8;
+      border: 1px solid #cfc6b8;
+      padding: 22px;
+    }
+
+    .lab-method-grid h3 {
+      margin-top: 0;
+    }
+
+    .lab-method-grid p {
+      color: #645e56;
+      margin-bottom: 0;
+    }
+
+    .lab-divider {
+      border: 0;
+      border-top: 1px solid #cfc6b8;
+      margin: 0;
+    }
+
+    .lab-footer {
+      border-top: 1px solid #cfc6b8;
+      padding: 28px 0 45px;
+      color: #645e56;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 760px) {
+      .actor-grid,
+      .lab-method-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .lab-summary th {
+        width: 40%;
+      }
+
+      .lab-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container">
+      <a class="brand" href="../../index.html">UNEQUAL EXCHANGE TOOLKIT</a>
+
+      <nav aria-label="Main navigation">
+        <a href="../../index.html">Home</a>
+        <a href="../../methods/">Methods</a>
+        <a href="../../data/">Data catalogue</a>
+        <a href="../">Transformation Lab</a>
+        <a href="../../contribute/">Contribute</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- INTRODUCTION -->
+
+    <section class="hero">
+      <div class="container">
+        <div class="lab-intro">
+
+          <p class="lab-kicker">
+            Transformation Lab / Research instrument 02
+          </p>
+
+          <p>
+            <a href="../">← Back to Transformation Lab</a>
+          </p>
+
+          <h1>Relinking Scenario Builder</h1>
+
+          <p class="lead">
+            What might changing an economic relationship make possible?
+          </p>
+
+          <p>
+            This experimental instrument explores how a proposed change
+            in relationships might enable particular functions and
+            capacities to develop, be exercised and reproduced over time.
+          </p>
+
+          <p>
+            The current prototype uses a hypothetical machinery maintenance
+            arrangement involving a Sabah palm-oil processor, a supplier
+            and a training institution.
+          </p>
+
+          <div class="lab-note">
+            <strong>What this instrument does</strong>
+
+            <p>
+              It generates a research specification from user-selected
+              assumptions. It identifies questions and evidence requirements;
+              it does not simulate economic outcomes, calculate capacity
+              scores or establish that an intervention would succeed.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SCENARIO -->
+
+    <section>
+      <div class="container">
+
+        <div class="lab-section-heading">
+          <p class="lab-kicker">01 / The scenario</p>
+
+          <h2>Maintenance and technical learning</h2>
+
+          <p>
+            Consider a hypothetical palm-oil processor in Sabah
+            exploring a new arrangement for machinery maintenance.
+            The proposed arrangement could connect the processor
+            with a machinery supplier and a training institution.
+          </p>
+
+          <p>
+            The actors are illustrative. No existing partnership,
+            shortage of skills or pattern of dependence is assumed.
+          </p>
+        </div>
+
+        <div class="actor-grid">
+
+          <article class="actor">
+            <span class="actor-number">Actor A</span>
+            <h3>Processor</h3>
+            <p>
+              Operates machinery requiring maintenance. Its actual
+              equipment, skills and maintenance arrangements
+              are unspecified.
+            </p>
+          </article>
+
+          <article class="actor">
+            <span class="actor-number">Actor B</span>
+            <h3>Machinery supplier</h3>
+            <p>
+              A potential source of technical knowledge, equipment,
+              components or support. No commitment is assumed.
+            </p>
+          </article>
+
+          <article class="actor">
+            <span class="actor-number">Actor C</span>
+            <h3>Training institution</h3>
+            <p>
+              A potential provider of instruction and skills
+              assessment. Its actual capabilities are unknown.
+            </p>
+          </article>
+
+        </div>
+
+        <p>
+          <strong>Proposed intervention:</strong>
+          Establish a maintenance arrangement connecting these actors,
+          with technical training as a specified condition.
+        </p>
+
+        <p class="lab-small">
+          The existing arrangement would need to be documented before
+          this scenario could be used in an empirical study.
+        </p>
+
+      </div>
+    </section>
+
+    <hr class="lab-divider">
+
+
+    <!-- INTERACTIVE BUILDER -->
+
+    <section id="scenario-builder">
+      <div class="container">
+
+        <div class="lab-section-heading">
+
+          <p class="lab-kicker">02 / Explore</p>
+
+          <h2>Relinking Scenario Builder</h2>
+
+          <p>
+            Explore a hypothetical change in relationships between a processor,
+            machinery supplier and training institution. Select a function
+            and specify the conditions under which it might be developed.
+            Your selections are assumptions, not observed conditions.
+          </p>
+
+        </div>
+
+        <form id="relinking-form" class="lab-form">
+
+          <h3>Scenario conditions</h3>
+
+          <div class="lab-field">
+
+            <label for="task">
+              1. Which function are we investigating?
+            </label>
+
+            <select id="task" name="task">
+              <option value="routine">
+                Perform a specified routine maintenance task
+              </option>
+              <option value="fault">
+                Diagnose and repair a specified fault
+              </option>
+              <option value="train">
+                Train an additional technician
+              </option>
+            </select>
+
+            <p class="field-help">
+              An empirical study would need to identify the
+              actual machine, task and performance standard.
+            </p>
+
+          </div>
+
+
+          <div class="lab-field">
+
+            <label for="training">
+              2. What training arrangement is proposed?
+            </label>
+
+            <select id="training" name="training">
+              <option value="supplier">
+                Supplier-led instruction
+              </option>
+              <option value="joint">
+                Joint supplier–institution training
+              </option>
+              <option value="institution">
+                Training institution-led instruction
+              </option>
+              <option value="none">
+                No training arrangement specified
+              </option>
+            </select>
+
+            <p class="field-help">
+              Training provision does not itself establish
+              that a skill has been acquired.
+            </p>
+
+          </div>
+
+
+          <div class="lab-field">
+
+            <label for="knowledge">
+              3. What are the conditions of technical knowledge access?
+            </label>
+
+            <select id="knowledge" name="knowledge">
+              <option value="unknown">
+                Not established
+              </option>
+              <option value="restricted">
+                Use depends on supplier permission
+              </option>
+              <option value="shared">
+                Documented permission to use and teach
+              </option>
+              <option value="independent">
+                Locally held and usable without continuing
+                supplier permission
+              </option>
+            </select>
+
+            <p class="field-help">
+              Consider manuals, diagnostic tools, software,
+              licences and permission to teach others.
+            </p>
+
+          </div>
+
+
+          <div class="lab-field">
+
+            <label for="parts">
+              4. How would replacement components be obtained?
+            </label>
+
+            <select id="parts" name="parts">
+              <option value="unknown">
+                Not established
+              </option>
+              <option value="supplier">
+                Supplier-controlled access
+              </option>
+              <option value="alternative">
+                Documented alternative sourcing
+              </option>
+              <option value="local">
+                Local provision demonstrated
+              </option>
+            </select>
+
+            <p class="field-help">
+              Component availability, compatibility and cost
+              require separate investigation.
+            </p>
+
+          </div>
+
+
+          <div class="lab-field">
+
+            <label for="continuity">
+              5. How is training continuity organised?
+            </label>
+
+            <select id="continuity" name="continuity">
+              <option value="unknown">
+                Not established
+              </option>
+              <option value="individual">
+                Depends on named individuals
+              </option>
+              <option value="institution">
+                Institutional responsibility specified
+              </option>
+              <option value="demonstrated">
+                Continuity demonstrated with evidence
+              </option>
+            </select>
+
+            <p class="field-help">
+              A skill may be demonstrated once without the
+              arrangements needed to reproduce it.
+            </p>
+
+          </div>
+
+
+          <div class="lab-field">
+
+            <label for="time">
+              6. When should the arrangement be examined?
+            </label>
+
+            <select id="time" name="time">
+              <option value="initial">
+                Initial implementation
+              </option>
+              <option value="cycle">
+                After one operating cycle
+              </option>
+              <option value="turnover">
+                Following technician turnover
+              </option>
+              <option value="disruption">
+                Following supplier disruption
+              </option>
+            </select>
+
+            <p class="field-help">
+              Different observation points reveal different
+              questions about retention and reproduction.
+            </p>
+
+          </div>
+
+          <button class="lab-button" type="submit">
+            Generate research specification
+          </button>
+
+        </form>
+
+
+        <!-- GENERATED OUTPUT -->
+
+        <div
+          id="lab-output"
+          class="lab-output"
+          role="region"
+          aria-label="Generated research specification"
+          aria-live="polite"
+          hidden
+        >
+
+          <span class="lab-status">
+            Research specification generated
+          </span>
+
+          <h3 id="output-title"></h3>
+
+          <p>
+            This specification identifies what would need to be
+            investigated. It does not determine whether the
+            intervention succeeds.
+          </p>
+
+          <table class="lab-summary">
+            <tbody id="output-summary"></tbody>
+          </table>
+
+          <h4>Research questions</h4>
+
+          <ul id="output-questions"></ul>
+
+          <h4>Evidence required</h4>
+
+          <ul id="output-evidence"></ul>
+
+          <div class="lab-warning">
+
+            <strong>Analytical status: undetermined</strong>
+
+            <p>
+              The selected conditions are hypothetical assumptions.
+              No conclusion about capacity formation, autonomy,
+              reduced dependence or long-term reproduction follows
+              from these selections alone.
+            </p>
+
+          </div>
+
+          <div class="lab-actions">
+
+            <button
+              id="copy-specification"
+              class="lab-button secondary"
+              type="button"
+            >
+              Copy specification
+            </button>
+
+            <button
+              id="reset-scenario"
+              class="lab-button secondary"
+              type="button"
+            >
+              Start again
+            </button>
+
+          </div>
+
+          <p
+            id="copy-message"
+            class="lab-small"
+            role="status"
+            aria-live="polite"
+          ></p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="lab-divider">
+
+
+    <!-- RESEARCH LOGIC -->
+
+    <section>
+      <div class="container">
+
+        <div class="lab-section-heading">
+
+          <p class="lab-kicker">03 / Research logic</p>
+
+          <h2>What does this instrument investigate?</h2>
+
+          <p>
+            A new relationship does not automatically produce
+            a new capacity. This instrument distinguishes three analytical
+            questions that would need to be investigated with evidence.
+          </p>
+
+        </div>
+
+        <div class="lab-method-grid">
+
+          <article>
+
+            <h3>Function</h3>
+
+            <p>
+              What specific activity becomes possible?
+              Who can perform it, using which tools and
+              to what standard?
+            </p>
+
+          </article>
+
+          <article>
+
+            <h3>Control</h3>
+
+            <p>
+              Who can access, use and direct the relevant
+              knowledge, equipment and resources?
+              What permissions or relationships remain necessary?
+            </p>
+
+          </article>
+
+          <article>
+
+            <h3>Reproduction</h3>
+
+            <p>
+              Can the function be retained, renewed and
+              passed on over time? What happens when
+              personnel, funding or supplier relationships change?
+            </p>
+
+          </article>
+
+        </div>
+
+        <div class="lab-note">
+
+          <strong>A central distinction</strong>
+
+          <p>
+            A technician may acquire a maintenance skill without
+            the processor gaining control over the equipment,
+            components or arrangements needed to deploy it.
+            The processor may also perform a repair once without
+            being able to reproduce that capability after staff turnover.
+          </p>
+
+          <p>
+            These possibilities must be investigated separately.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <hr class="lab-divider">
+
+
+    <!-- METHODS AND LIMITATIONS -->
+
+    <section id="methodological-note">
+      <div class="container">
+
+        <div class="lab-section-heading">
+
+          <p class="lab-kicker">04 / Methodological note</p>
+
+          <h2>Status and limitations</h2>
+
+        </div>
+
+        <p>
+          This is an experimental research-specification tool.
+          It uses a hypothetical scenario to organise questions
+          about relational change and the production and
+          reproduction of specific capacities.
+        </p>
+
+        <p>
+          The current prototype does not use an empirical dataset,
+          estimate causal effects, simulate economic behaviour,
+          assess the feasibility of a real project or measure
+          unequal exchange.
+        </p>
+
+        <p>
+          Its outputs depend on user-selected assumptions.
+          Options such as "local provision demonstrated" describe
+          conditions a user may choose to investigate; selecting
+          them does not supply evidence that those conditions exist.
+        </p>
+
+        <p>
+          An empirical application would require a defined
+          machine and maintenance task, documentation of existing
+          arrangements, evidence concerning participating actors,
+          observable performance standards and a strategy for
+          investigating change over time and alternative explanations.
+        </p>
+
+        <p>
+          The relationship between relinking and unequal exchange
+          is a further research question. A change in maintenance
+          arrangements cannot, by itself, establish that unequal
+          exchange has been reduced.
+        </p>
+
+        <p class="lab-small">
+          Version 0.1 · Conceptual prototype · No empirical results.
+          The scenario is illustrative and should not be interpreted
+          as a description of any particular Sabah enterprise
+          or institution.
+        </p>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="lab-footer">
+    <div class="container">
+      <p>
+        Unequal Exchange Toolkit · Open research in development
+      </p>
+
+      <p>
+        <a href="../../methods/">Methods</a> ·
+        <a href="../../data/">Data catalogue</a> ·
+        <a href="../../contribute/">Contribute</a>
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- INTERACTION -->
+
+  <script>
+    "use strict";
+
+    const form = document.getElementById("relinking-form");
+    const output = document.getElementById("lab-output");
+    const outputTitle = document.getElementById("output-title");
+    const outputSummary = document.getElementById("output-summary");
+    const outputQuestions = document.getElementById("output-questions");
+    const outputEvidence = document.getElementById("output-evidence");
+    const copyButton = document.getElementById("copy-specification");
+    const resetButton = document.getElementById("reset-scenario");
+    const copyMessage = document.getElementById("copy-message");
+
+    let currentSpecification = "";
+
+    const labels = {
+      task: {
+        routine: "Perform a specified routine maintenance task",
+        fault: "Diagnose and repair a specified fault",
+        train: "Train an additional technician"
+      },
+
+      training: {
+        supplier: "Supplier-led instruction",
+        joint: "Joint supplier–institution training",
+        institution: "Training institution-led instruction",
+        none: "No training arrangement specified"
+      },
+
+      knowledge: {
+        unknown: "Not established",
+        restricted: "Use depends on supplier permission",
+        shared: "Documented permission to use and teach",
+        independent:
+          "Locally held and usable without continuing supplier permission"
+      },
+
+      parts: {
+        unknown: "Not established",
+        supplier: "Supplier-controlled access",
+        alternative: "Documented alternative sourcing",
+        local: "Local provision demonstrated"
+      },
+
+      continuity: {
+        unknown: "Not established",
+        individual: "Depends on named individuals",
+        institution: "Institutional responsibility specified",
+        demonstrated: "Continuity demonstrated with evidence"
+      },
+
+      time: {
+        initial: "Initial implementation",
+        cycle: "After one operating cycle",
+        turnover: "Following technician turnover",
+        disruption: "Following supplier disruption"
+      }
+    };
+
+
+    function addListItem(list, text) {
+      const item = document.createElement("li");
+      item.textContent = text;
+      list.appendChild(item);
+    }
+
+
+    function addSummaryRow(label, value) {
+      const row = document.createElement("tr");
+      const heading = document.createElement("th");
+      const cell = document.createElement("td");
+
+      heading.scope = "row";
+      heading.textContent = label;
+      cell.textContent = value;
+
+      row.appendChild(heading);
+      row.appendChild(cell);
+
+      outputSummary.appendChild(row);
+    }
+
+
+    function buildQuestions(values) {
+      const questions = [
+        "Can the specified function actually be performed to a defined standard?",
+        "Which actors, tools, resources and relationships are necessary to perform it?",
+        "Who can authorise and direct the maintenance activity?"
+      ];
+
+      if (values.task === "routine") {
+        questions.push(
+          "Which routine maintenance procedures are required, and how would competent performance be demonstrated?"
+        );
+      }
+
+      if (values.task === "fault") {
+        questions.push(
+          "Can technicians diagnose the specified fault and complete a safe, technically adequate repair?"
+        );
+      }
+
+      if (values.task === "train") {
+        questions.push(
+          "Can an additional technician demonstrate the relevant competence independently of course attendance?"
+        );
+      }
+
+      if (values.training === "none") {
+        questions.push(
+          "Without a specified training arrangement, how would the necessary skills be acquired and renewed?"
+        );
+      } else {
+        questions.push(
+          "Does the proposed training arrangement produce demonstrable competence rather than attendance alone?"
+        );
+      }
+
+      if (values.training === "supplier") {
+        questions.push(
+          "What would happen to training provision if the supplier withdrew?"
+        );
+      }
+
+      if (values.training === "joint") {
+        questions.push(
+          "How would teaching responsibilities, knowledge access and assessment be distributed between the supplier and training institution?"
+        );
+      }
+
+      if (values.training === "institution") {
+        questions.push(
+          "Does the training institution have access to the equipment, technical information and instructors required?"
+        );
+      }
+
+      if (values.knowledge === "unknown") {
+        questions.push(
+          "Who has permission to access, use, modify and teach the relevant technical knowledge?"
+        );
+      }
+
+      if (values.knowledge === "restricted") {
+        questions.push(
+          "What functions would remain dependent on supplier permission, and what would happen if that permission changed?"
+        );
+      }
+
+      if (
+        values.knowledge === "shared" ||
+        values.knowledge === "independent"
+      ) {
+        questions.push(
+          "What documentary and practical evidence establishes the selected knowledge-access conditions?"
+        );
+      }
+
+      if (values.parts === "unknown") {
+        questions.push(
+          "Which replacement components are necessary, and how can they be obtained?"
+        );
+      }
+
+      if (values.parts === "supplier") {
+        questions.push(
+          "Can maintenance continue if supplier-controlled components become unavailable?"
+        );
+      }
+
+      if (
+        values.parts === "alternative" ||
+        values.parts === "local"
+      ) {
+        questions.push(
+          "Are the proposed component sources technically compatible, reliable and affordable?"
+        );
+      }
+
+      if (values.continuity === "unknown") {
+        questions.push(
+          "Who would be responsible for retaining and renewing the relevant skills?"
+        );
+      }
+
+      if (values.continuity === "individual") {
+        questions.push(
+          "What happens if the individuals on whom the arrangement depends leave?"
+        );
+      }
+
+      if (
+        values.continuity === "institution" ||
+        values.continuity === "demonstrated"
+      ) {
+        questions.push(
+          "What evidence shows that institutional responsibility or continuity functions in practice?"
+        );
+      }
+
+      if (values.time === "initial") {
+        questions.push(
+          "What evidence would establish the initial capability, and which longer-term outcomes remain untested?"
+        );
+      }
+
+      if (values.time === "cycle") {
+        questions.push(
+          "Has the function been retained and renewed across an operating cycle?"
+        );
+      }
+
+      if (values.time === "turnover") {
+        questions.push(
+          "Can the function still be performed after experienced technicians leave?"
+        );
+      }
+
+      if (values.time === "disruption") {
+        questions.push(
+          "Can the function continue if the supplier relationship is interrupted?"
+        );
+      }
+
+      return questions;
+    }
+
+
+    function buildEvidence(values) {
+      const evidence = [
+        "Identification of a specific machine, task and observable performance standard.",
+        "Documentation of the existing maintenance arrangement.",
+        "Evidence identifying the participating actors and their actual roles.",
+        "Records or observations establishing whether the specified function can be performed.",
+        "Documentation of access to relevant tools, manuals, software and technical knowledge.",
+        "Maintenance records, interviews or other evidence concerning authority and responsibility."
+      ];
+
+      if (values.training !== "none") {
+        evidence.push(
+          "Training plans, instructional resources, assessment criteria and demonstrated trainee performance."
+        );
+      } else {
+        evidence.push(
+          "Evidence establishing how relevant skills are acquired in the absence of a specified training arrangement."
+        );
+      }
+
+      if (values.knowledge === "restricted") {
+        evidence.push(
+          "Contracts, licences or other records establishing supplier permissions and restrictions."
+        );
+      } else {
+        evidence.push(
+          "Documents and observations establishing the actual conditions of technical knowledge access and use."
+        );
+      }
+
+      evidence.push(
+        "Component specifications, procurement arrangements and evidence of availability and compatibility."
+      );
+
+      evidence.push(
+        "Records identifying who finances maintenance, training and replacement resources."
+      );
+
+      if (
+        values.continuity === "institution" ||
+        values.continuity === "demonstrated"
+      ) {
+        evidence.push(
+          "Institutional records and longitudinal observations establishing whether responsibility and continuity operate in practice."
+        );
+      } else {
+        evidence.push(
+          "Evidence identifying responsibility for succession, continued training and knowledge retention."
+        );
+      }
+
+      if (values.time === "turnover") {
+        evidence.push(
+          "Observations or records of maintenance performance before and after technician turnover."
+        );
+      }
+
+      if (values.time === "disruption") {
+        evidence.push(
+          "Evidence of what happens to maintenance functions during an actual disruption, or an explicitly labelled hypothetical stress test."
+        );
+      }
+
+      if (values.time === "cycle") {
+        evidence.push(
+          "Observations across a defined operating cycle, including retention of skills and renewal of necessary inputs."
+        );
+      }
+
+      evidence.push(
+        "Documentation of alternative explanations for any observed change."
+      );
+
+      return evidence;
+    }
+
+
+    function generateSpecification(event) {
+      event.preventDefault();
+
+      const values = {
+        task: form.elements.task.value,
+        training: form.elements.training.value,
+        knowledge: form.elements.knowledge.value,
+        parts: form.elements.parts.value,
+        continuity: form.elements.continuity.value,
+        time: form.elements.time.value
+      };
+
+      const questions = buildQuestions(values);
+      const evidence = buildEvidence(values);
+
+      outputTitle.textContent = labels.task[values.task];
+
+      outputSummary.replaceChildren();
+      outputQuestions.replaceChildren();
+      outputEvidence.replaceChildren();
+
+      const summary = [
+        ["Function", labels.task[values.task]],
+        ["Training arrangement", labels.training[values.training]],
+        ["Knowledge access", labels.knowledge[values.knowledge]],
+        ["Component access", labels.parts[values.parts]],
+        ["Training continuity", labels.continuity[values.continuity]],
+        ["Observation point", labels.time[values.time]]
+      ];
+
+      summary.forEach(function (row) {
+        addSummaryRow(row[0], row[1]);
+      });
+
+      questions.forEach(function (question) {
+        addListItem(outputQuestions, question);
+      });
+
+      evidence.forEach(function (item) {
+        addListItem(outputEvidence, item);
+      });
+
+      currentSpecification = [
+        "TRANSFORMATION LAB — RELINKING SCENARIO SPECIFICATION",
+        "Prototype 01: Maintenance and technical learning",
+        "",
+        "STATUS: Hypothetical scenario; no empirical outcome established.",
+        "",
+        "SCENARIO CONDITIONS",
+        ...summary.map(function (row) {
+          return row[0] + ": " + row[1];
+        }),
+        "",
+        "RESEARCH QUESTIONS",
+        ...questions.map(function (question, index) {
+          return (index + 1) + ". " + question;
+        }),
+        "",
+        "EVIDENCE REQUIRED",
+        ...evidence.map(function (item, index) {
+          return (index + 1) + ". " + item;
+        }),
+        "",
+        "LIMITATION",
+        "The selected conditions are hypothetical assumptions. " +
+        "No conclusion about capacity formation, autonomy, reduced " +
+        "dependence or long-term reproduction follows from these " +
+        "selections alone."
+      ].join("\n");
+
+      copyMessage.textContent = "";
+      output.hidden = false;
+
+      output.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
+
+
+    async function copySpecification() {
+      if (!currentSpecification) {
+        return;
+      }
+
+      try {
+        await navigator.clipboard.writeText(currentSpecification);
+        copyMessage.textContent = "Specification copied.";
+      } catch (error) {
+        copyMessage.textContent =
+          "Automatic copying is unavailable in this browser. " +
+          "You can select and copy the specification above.";
+      }
+    }
+
+
+    function resetScenario() {
+      form.reset();
+
+      output.hidden = true;
+      currentSpecification = "";
+      copyMessage.textContent = "";
+
+      document.getElementById("scenario-builder").scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      form.elements.task.focus({
+        preventScroll: true
+      });
+    }
+
+
+    form.addEventListener("submit", generateSpecification);
+    copyButton.addEventListener("click", copySpecification);
+    resetButton.addEventListener("click", resetScenario);
+
+    /* Hide an existing output when assumptions change,
+       so it cannot be mistaken for the current selections. */
+
+    form.addEventListener("change", function () {
+      output.hidden = true;
+      currentSpecification = "";
+      copyMessage.textContent = "";
+    });
+  </script>
+
+</body>
+</html>
