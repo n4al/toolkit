@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A research worksheet for examining the capacities assumed, exercised and potentially produced in economic models and empirical cases.">
+  <title>Model &amp; Capacity Audit | Unequal Exchange Toolkit</title>
+  <link rel="stylesheet" href="../../assets/style.css">
+
+  <style>
+    .audit-intro { max-width: 820px; }
+
+    .audit-kicker {
+      color: #9d302a;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .audit-note {
+      background: #fffdf8;
+      border-left: 4px solid #9d302a;
+      padding: 20px 24px;
+      margin: 26px 0;
+    }
+
+    .audit-form, .audit-result, .audit-example {
+      background: #fffdf8;
+      border: 1px solid #cfc6b8;
+      padding: clamp(20px, 4vw, 36px);
+      margin: 24px 0;
+    }
+
+    .audit-field { margin: 0 0 28px; }
+
+    .audit-field label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .audit-field input,
+    .audit-field textarea,
+    .audit-field select {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      border: 1px solid #a9a094;
+      background: #fff;
+      color: #242321;
+      padding: 12px;
+      font: inherit;
+    }
+
+    .audit-field textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .audit-help {
+      color: #645e56;
+      font-size: .9rem;
+      margin: 7px 0 0;
+    }
+
+    .audit-button {
+      display: inline-block;
+      border: 1px solid #9d302a;
+      background: #9d302a;
+      color: #fff;
+      padding: 12px 18px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .audit-button.secondary {
+      background: transparent;
+      color: #9d302a;
+    }
+
+    .audit-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 22px 0;
+    }
+
+    .audit-result {
+      border: 2px solid #9d302a;
+      overflow-wrap: anywhere;
+    }
+
+    .audit-result[hidden] { display: none; }
+
+    .audit-result dt {
+      font-weight: 700;
+      margin-top: 22px;
+    }
+
+    .audit-result dd {
+      margin: 6px 0 0;
+      white-space: pre-wrap;
+    }
+
+    .audit-example h3 { margin-top: 0; }
+
+    .audit-example li { margin-bottom: 12px; }
+
+    .audit-divider {
+      border: 0;
+      border-top: 1px solid #cfc6b8;
+      margin: 42px 0;
+    }
+
+    .audit-small {
+      color: #645e56;
+      font-size: .88rem;
+    }
+
+    @media (max-width: 760px) {
+      .audit-button { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <a class="brand" href="../../index.html">UNEQUAL EXCHANGE TOOLKIT</a>
+    <nav aria-label="Main navigation">
+      <a href="../../index.html">Home</a>
+      <a href="../../methods/">Methods</a>
+      <a href="../../data/">Data catalogue</a>
+      <a href="../" aria-current="page">Relinking Lab</a>
+      <a href="../../contribute/">Contribute</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="container">
+      <div class="audit-intro">
+
+        <p class="audit-kicker">Relinking Lab / Research instrument 02</p>
+
+        <p><a href="../">← Back to Relinking Lab</a></p>
+
+        <h1>Model &amp; Capacity Audit</h1>
+
+        <p class="lead">
+          What capacities does an explanation assume, use or leave to be explained?
+        </p>
+
+        <p>
+          This worksheet examines the capacities involved in a published
+          model, proposed intervention or empirical case. It distinguishes
+          what a source establishes from what a researcher infers or
+          proposes to investigate.
+        </p>
+
+        <p>
+          The audit does not assume that relinking is necessary, feasible
+          or sufficient. It can identify capacities that are absent,
+          externally controlled, reproduced through existing relationships
+          or potentially developed through alternative arrangements.
+        </p>
+
+        <div class="audit-note">
+          <strong>What this instrument does</strong>
+          <p>
+            Organises source reconstruction, capacity assumptions,
+            relationships and evidence gaps into a reusable research record.
+            It does not calculate a capacity score, establish causation
+            or demonstrate that a proposed transformation will succeed.
+          </p>
+        </div>
+
+        <p>
+          <a href="#audit-worksheet">Start an audit ↓</a> ·
+          <a href="#worked-example">View the Amin (1987) example ↓</a>
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="audit-worksheet">
+    <div class="container">
+
+      <p class="audit-kicker">01 / Research worksheet</p>
+      <h2>Conduct an audit</h2>
+
+      <p>
+        Enter a published study, model, intervention or empirical case.
+        Use "not specified" where the source does not provide an answer.
+        Distinguish observed evidence from your own hypotheses.
+      </p>
+
+      <form id="audit-form" class="audit-form">
+
+        <div class="audit-field">
+          <label for="audit-title">1. Study or case</label>
+          <input id="audit-title" name="title" type="text"
+                 placeholder="Author, year, model or case name" required>
+          <p class="audit-help">
+            Identify the precise source, version or empirical setting.
+          </p>
+        </div>
+
+        <div class="audit-field">
+          <label for="audit-type">2. What are you auditing?</label>
+          <select id="audit-type" name="type">
+            <option>Published theoretical model</option>
+            <option>Published empirical study</option>
+            <option>Historical case</option>
+            <option>Contemporary empirical case</option>
+            <option>Proposed intervention</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="audit-field">
+          <label for="audit-question">3. What question does the source address?</label>
+          <textarea id="audit-question" name="question"
+                    placeholder="Reconstruct the source's own question before introducing yours."></textarea>
+        </div>
+
+        <div class="audit-field">
+          <label for="audit-mechanism">4. What relationships or mechanisms does it specify?</label>
+          <textarea id="audit-mechanism" name="mechanism"
+                    placeholder="Identify actors, resources, production relations, institutions and proposed mechanisms."></textarea>
+          <p class="audit-help">
+            Distinguish an explicit mechanism from a relationship you
+            infer or want to investigate.
+          </p>
+        </div>
+
+        <div class="audit-field">
+          <label for="audit-assumed">5. Which capacities are assumed?</label>
+          <textarea id="audit-assumed" name="assumed"
+                    placeholder="What must already exist for the model, intervention or activity to work?"></textarea>
+          <p class="audit-help">
+            Consider productive, technical, financial, institutional,
+            organisational and political capacities where relevant.
+            Do not assume every category applies.
+          </p>
+        </div>
+
+        <div class="audit-field">
+          <label for="audit-exercised">6. Which capacities are exercised?</label>
+          <textarea id="audit-exercised" name="exercised"
+                    placeholder="What capacities are actually used within the account? By whom and for what?"></textarea>
+        </div>
+
+        <div class="audit-field">
+          <label for="audit-produced">7. Which capacities are produced or reproduced?</label>
+          <textarea id="audit-produced" name="produced"
+                    placeholder="What new or sustained capacities does the source demonstrate, propose or leave uncertain?"></textarea>
+          <p class="audit-help">
+            Label each claim: demonstrated, asserted, hypothetical
+            or not established.
+          </p>
+        </div>
+
+        <div class="audit-field">
+          <label for="audit-control">8. Who controls access to the relevant capacities?</label>
+          <textarea id="audit-control" name="control"
+                    placeholder="Consider ownership, permissions, financing, authority, coordination and external dependencies."></textarea>
+        </div>
+
+        <div class="audit-field">
+          <label for="audit-reproduction">9. How are capacities sustained over time?</label>
+          <textarea id="audit-reproduction" name="reproduction"
+                    placeholder="Identify maintenance, learning, replacement, funding, institutions and continuity across disruptions."></textarea>
+        </div>
+
+        <div class="audit-field">
+          <label for="audit-omissions">10. What is left open or outside the model?</label>
+          <textarea id="audit-omissions" name="omissions"
+                    placeholder="Identify exclusions, unspecified processes, unresolved mechanisms and limits of inference."></textarea>
+          <p class="audit-help">
+            An omission from one article is not necessarily an omission
+            from an author's wider body of work.
+          </p>
+        </div>
+
+        <div class="audit-field">
+          <label for="audit-evidence">11. What evidence would resolve the open questions?</label>
+          <textarea id="audit-evidence" name="evidence"
+                    placeholder="Specify documents, observations, interviews, datasets, comparisons or longitudinal evidence."></textarea>
+        </div>
+
+        <div class="audit-field">
+          <label for="audit-inference">12. What is your provisional interpretation?</label>
+          <textarea id="audit-inference" name="inference"
+                    placeholder="State your hypothesis separately from the source's findings, including possible alternative explanations."></textarea>
+        </div>
+
+        <div class="audit-actions">
+          <button class="audit-button" type="submit">
+            Generate audit record
+          </button>
+          <button class="audit-button secondary" type="reset">
+            Clear worksheet
+          </button>
+        </div>
+
+      </form>
+
+      <section id="audit-result" class="audit-result"
+               aria-label="Generated audit record"
+               aria-live="polite" hidden>
+
+        <p class="audit-kicker">Research record / Not independently verified</p>
+        <h3 id="audit-result-title"></h3>
+        <dl id="audit-result-fields"></dl>
+
+        <div class="audit-note">
+          <strong>Interpretive caution</strong>
+          <p>
+            This record reproduces user-entered statements. The Toolkit
+            has not verified their accuracy or established any causal
+            claim or empirical outcome.
+          </p>
+        </div>
+
+        <div class="audit-actions">
+          <button id="audit-copy" class="audit-button secondary" type="button">
+            Copy audit record
+          </button>
+        </div>
+
+        <p id="audit-copy-status" class="audit-small"
+           role="status" aria-live="polite"></p>
+
+      </section>
+
+    </div>
+  </section>
+
+  <hr class="audit-divider">
+
+  <section id="worked-example">
+    <div class="container">
+
+      <p class="audit-kicker">02 / Worked example</p>
+      <h2>Auditing Amin (1987)</h2>
+
+      <div class="audit-example">
+
+        <h3>A Note on the Concept of Delinking</h3>
+
+        <p>
+          This example reconstructs selected features of Samir Amin's
+          1987 article and identifies further questions generated by
+          the audit. It is not an independent reproduction of his model.
+        </p>
+
+        <p>
+          <a href="../../methods/amin-1987/">
+            Read the Methods Library profile →
+          </a>
+        </p>
+
+        <h4>What the article specifies</h4>
+        <ul>
+          <li>
+            Delinking concerns the subordination of external economic
+            relations to nationally grounded, popular development
+            priorities; it is not equated with autarky.
+          </li>
+          <li>
+            An illustrative comparison considers national-popular and
+            world-capitalist development strategies for an initially
+            identical economy over ten years.
+          </li>
+          <li>
+            The scenarios share specified population-growth,
+            productivity and investment assumptions.
+          </li>
+          <li>
+            The comparison illustrates contrasting sectoral and
+            distributional outcomes. It is not an empirical estimate
+            of unequal exchange.
+          </li>
+        </ul>
+
+        <h4>Capacity questions raised by the audit</h4>
+        <ul>
+          <li>
+            <strong>Assumed:</strong> What productive, investment,
+            organisational and political capacities would be required
+            to establish the alternative development priorities?
+          </li>
+          <li>
+            <strong>Exercised:</strong> Which capacities are involved
+            in reorganising investment, production and distribution?
+          </li>
+          <li>
+            <strong>Produced:</strong> Under what conditions might
+            altered economic relationships generate further technical,
+            institutional or collective capacities?
+          </li>
+          <li>
+            <strong>Control:</strong> Who can direct investment,
+            coordinate production and determine the terms of
+            external economic relationships?
+          </li>
+          <li>
+            <strong>Reproduction:</strong> What would sustain those
+            capacities across changing economic and political conditions?
+          </li>
+        </ul>
+
+        <h4>What remains unresolved</h4>
+        <p>
+          The 1987 note refers readers to Amin's earlier work for
+          detailed technical arguments. The illustrative comparison
+          does not independently establish how all the capacities
+          required to undertake and sustain such a transformation
+          would be formed.
+        </p>
+
+        <p>
+          These are questions prompted by the audit, not a claim
+          that Amin's wider work ignores political organisation,
+          internal articulation or the processual character of delinking.
+        </p>
+
+        <p class="audit-small">
+          Source: Samir Amin (1987), "A Note on the Concept of
+          Delinking," Review (Fernand Braudel Center), 10(3),
+          pp. 435–444. See the linked Methods Library profile
+          for source documentation and verification status.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+  <hr class="audit-divider">
+
+  <section>
+    <div class="container">
+      <p class="audit-kicker">03 / Methodological status</p>
+      <h2>What this audit cannot establish</h2>
+
+      <p>
+        Completing a worksheet does not demonstrate that a capacity
+        exists, that a relationship causes its development or that
+        reorganising an economy would produce autonomy. Those claims
+        require appropriate empirical and historical evidence.
+      </p>
+
+      <p>
+        The audit is designed to make assumptions, mechanisms,
+        evidentiary requirements and unresolved questions visible.
+        Its categories are analytical prompts, not a scoring system
+        or a predetermined sequence of development.
+      </p>
+
+      <p class="audit-small">
+        Version 0.1 · Experimental research instrument ·
+        User-generated records are not independently verified.
+        Worksheet contents are processed in the browser and are
+        not submitted to a Toolkit server by this page.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>Unequal Exchange Toolkit · Open research in development</p>
+    <p>
+      <a href="../">Relinking Lab</a> ·
+      <a href="../../methods/">Methods</a> ·
+      <a href="../../contribute/">Contribute</a>
+    </p>
+  </div>
+</footer>
+
+<script>
+  "use strict";
+
+  const auditForm = document.getElementById("audit-form");
+  const auditResult = document.getElementById("audit-result");
+  const auditResultTitle = document.getElementById("audit-result-title");
+  const auditResultFields = document.getElementById("audit-result-fields");
+  const auditCopy = document.getElementById("audit-copy");
+  const auditCopyStatus = document.getElementById("audit-copy-status");
+
+  const auditFields = [
+    ["title", "Study or case"],
+    ["type", "Source type"],
+    ["question", "Source question"],
+    ["mechanism", "Specified relationships and mechanisms"],
+    ["assumed", "Capacities assumed"],
+    ["exercised", "Capacities exercised"],
+    ["produced", "Capacities produced or reproduced"],
+    ["control", "Control and access"],
+    ["reproduction", "Reproduction over time"],
+    ["omissions", "Open questions and exclusions"],
+    ["evidence", "Evidence required"],
+    ["inference", "Provisional researcher interpretation"]
+  ];
+
+  let auditText = "";
+
+  function getAuditValues() {
+    const values = {};
+
+    for (const [name] of auditFields) {
+      values[name] = auditForm.elements[name].value.trim() ||
+        "Not specified.";
+    }
+
+    return values;
+  }
+
+  function generateAudit(event) {
+    event.preventDefault();
+
+    const values = getAuditValues();
+
+    auditResultTitle.textContent = values.title;
+    auditResultFields.replaceChildren();
+
+    for (const [name, label] of auditFields) {
+      const heading = document.createElement("dt");
+      const description = document.createElement("dd");
+
+      heading.textContent = label;
+      description.textContent = values[name];
+
+      auditResultFields.append(heading, description);
+    }
+
+    auditText = [
+      "MODEL & CAPACITY AUDIT",
+      "STATUS: User-generated research record; not independently verified.",
+      "",
+      ...auditFields.flatMap(([name, label]) => [
+        label.toUpperCase(),
+        values[name],
+        ""
+      ]),
+      "INTERPRETIVE CAUTION",
+      "This record reproduces user-entered statements. " +
+      "It does not establish causal claims or empirical outcomes."
+    ].join("\n");
+
+    auditCopyStatus.textContent = "";
+    auditResult.hidden = false;
+    auditResult.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  async function copyAudit() {
+    if (!auditText) return;
+
+    try {
+      await navigator.clipboard.writeText(auditText);
+      auditCopyStatus.textContent = "Audit record copied.";
+    } catch (error) {
+      auditCopyStatus.textContent =
+        "Automatic copying is unavailable. Select and copy " +
+        "the audit record above.";
+    }
+  }
+
+  auditForm.addEventListener("submit", generateAudit);
+  auditCopy.addEventListener("click", copyAudit);
+
+  auditForm.addEventListener("input", function () {
+    auditResult.hidden = true;
+    auditText = "";
+    auditCopyStatus.textContent = "";
+  });
+
+  auditForm.addEventListener("change", function () {
+    auditResult.hidden = true;
+    auditText = "";
+    auditCopyStatus.textContent = "";
+  });
+
+  auditForm.addEventListener("reset", function () {
+    auditResult.hidden = true;
+    auditText = "";
+    auditCopyStatus.textContent = "";
+  });
+</script>
+
+</body>
+</html>
