@@ -73,5 +73,30 @@
       "technique": "Literature-based synthesis and scenario comparison; adjusts IEA energy figures using a territorial-to-consumption-based ratio reported in Hickel et al. (2022). No full MRIO rerun.",
       "output": "Needs-based income thresholds and comparisons of energy and material requirements with current resource use; not an estimate of unequal-exchange flows."
     }
+  },
+  {
+    "id": "amin-1987",
+    "authors": "Amin",
+    "year": 1987,
+    "title": "A Note on the Concept of Delinking",
+    "category": "Historical and structural political economy",
+    "tags": [
+      "delinking",
+      "dependency",
+      "autocentric development",
+      "comparative modelling",
+      "law of value",
+      "income distribution"
+    ],
+    "path": "amin-1987/",
+    "summary": "Develops the concept of delinking through an illustrative comparison of national-popular and world-capitalist development strategies.",
+    "status": "Source-based methodological profile in preparation; illustrative model not independently reproduced",
+    "levels": {
+      "mechanism": "Delinking reorganises development priorities around a nationally grounded and popular law of value rather than subordinating them to the world-capitalist law of value.",
+      "strategy": "Compares two illustrative development strategies for an initially identical economy over ten years, using shared assumptions about population growth, productivity and investment.",
+      "technique": "Illustrative comparative modelling of sectoral production, relative prices, income distribution and growth. Detailed technical derivations are referred to Amin (1982).",
+      "output": "Contrasting illustrative growth and distribution outcomes under national-popular and world-capitalist development strategies; not independently reproduced empirical estimates."
+    }
   }
+]
 ]
