@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="description"
+        content="Explore research instruments for investigating the conditions, mechanisms and limits of economic transformation.">
+
+  <title>Transformation Lab | Unequal Exchange Toolkit</title>
+
+  <link rel="stylesheet" href="../assets/style.css">
+
+  <style>
+    .lab-intro {
+      max-width: 850px;
+    }
+
+    .lab-kicker {
+      color: #9d302a;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .lab-note {
+      background: #fffdf8;
+      border-left: 4px solid #9d302a;
+      padding: 20px 24px;
+      margin: 26px 0;
+    }
+
+    .lab-controls {
+      display: grid;
+      grid-template-columns: minmax(0, 2fr) minmax(180px, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .lab-control label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .lab-control input,
+    .lab-control select {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px;
+      border: 1px solid #a9a094;
+      background: #ffffff;
+      color: #242321;
+      font: inherit;
+    }
+
+    .lab-results-count {
+      color: #645e56;
+      font-size: 0.9rem;
+      margin-bottom: 18px;
+    }
+
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      margin: 24px 0 40px;
+    }
+
+    .lab-card {
+      background: #fffdf8;
+      border: 1px solid #cfc6b8;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .lab-card-type {
+      color: #9d302a;
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .lab-card h3 {
+      margin: 12px 0;
+    }
+
+    .lab-card p {
+      color: #645e56;
+    }
+
+    .lab-card-details {
+      border-top: 1px solid #cfc6b8;
+      padding-top: 16px;
+      margin-top: auto;
+      font-size: 0.9rem;
+    }
+
+    .lab-card-details p {
+      margin: 0 0 10px;
+    }
+
+    .lab-card-link {
+      display: inline-block;
+      margin-top: 14px;
+      font-weight: 700;
+    }
+
+    .lab-empty {
+      padding: 24px;
+      background: #fffdf8;
+      border: 1px solid #cfc6b8;
+    }
+
+    .lab-empty[hidden],
+    .lab-card[hidden] {
+      display: none;
+    }
+
+    .lab-section {
+      padding: 30px 0;
+    }
+
+    .lab-section-heading {
+      max-width: 790px;
+    }
+
+    .lab-small {
+      color: #645e56;
+      font-size: 0.88rem;
+    }
+
+    .lab-divider {
+      border: 0;
+      border-top: 1px solid #cfc6b8;
+      margin: 0;
+    }
+
+    @media (max-width: 760px) {
+      .lab-controls,
+      .lab-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+
+    <a class="brand" href="../index.html">
+      UNEQUAL EXCHANGE TOOLKIT
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../methods/">Methods</a>
+      <a href="../data/">Data catalogue</a>
+      <a href="./" aria-current="page">Transformation Lab</a>
+      <a href="../contribute/">Contribute</a>
+    </nav>
+
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- LAB INTRODUCTION -->
+
+  <section class="hero">
+    <div class="container">
+
+      <div class="lab-intro">
+
+        <p class="lab-kicker">
+          Research instruments and experiments
+        </p>
+
+        <h1>Transformation Lab</h1>
+
+        <p class="lead">
+          How do economic transformations become possible,
+          and what determines their limits?
+        </p>
+
+        <p>
+          The Transformation Lab provides research instruments
+          for investigating the conditions, mechanisms and limits
+          of economic transformation.
+        </p>
+
+        <p>
+          Its tools help researchers examine existing arrangements,
+          interrogate assumptions, specify proposed interventions
+          and identify the evidence needed to investigate change.
+        </p>
+
+        <p>
+          Relinking is one strategy explored within the Lab,
+          not a predetermined outcome. Instruments may be used
+          independently or combined in a research project.
+        </p>
+
+        <div class="lab-note">
+
+          <strong>How to use the Lab</strong>
+
+          <p>
+            Browse the instruments below. Each provides a different
+            way of formulating research questions and identifying
+            what would need to be established empirically.
+          </p>
+
+          <p>
+            Experimental tools are not evidence of successful
+            transformation. Their assumptions, applications and
+            limitations should be examined separately.
+          </p>
+
+        </div>
+
+        <p>
+          <a href="#instruments">
+            Explore research instruments ↓
+          </a>
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- SEARCHABLE CATALOGUE -->
+
+  <section id="instruments" class="lab-section">
+    <div class="container">
+
+      <div class="lab-section-heading">
+
+        <p class="lab-kicker">
+          01 / Instrument catalogue
+        </p>
+
+        <h2>Explore the instruments</h2>
+
+        <p>
+          Search by instrument, research question, application
+          or related concept.
+        </p>
+
+      </div>
+
+      <div class="lab-controls">
+
+        <div class="lab-control">
+
+          <label for="lab-search">
+            Search instruments
+          </label>
+
+          <input
+            id="lab-search"
+            type="search"
+            placeholder="e.g. capacity, Amin, relinking, Sabah"
+          >
+
+        </div>
+
+        <div class="lab-control">
+
+          <label for="lab-filter">
+            Instrument type
+          </label>
+
+          <select id="lab-filter">
+
+            <option value="all">
+              All instruments
+            </option>
+
+            <option value="audit">
+              Audit and diagnosis
+            </option>
+
+            <option value="scenario">
+              Scenario exploration
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+      <p
+        id="lab-results-count"
+        class="lab-results-count"
+        role="status"
+        aria-live="polite"
+      >
+        Showing 2 instruments
+      </p>
+
+      <div id="lab-grid" class="lab-grid">
+
+
+        <!-- INSTRUMENT: CAPACITY AUDIT -->
+
+        <article
+          class="lab-card"
+          data-type="audit"
+          data-search="model capacity audit amin 1987 assumptions mechanisms reproduction evidence historical cases diagnosis transformation"
+        >
+
+          <span class="lab-card-type">
+            Audit and diagnosis
+          </span>
+
+          <h3>Model &amp; Capacity Audit</h3>
+
+          <p>
+            Examine the capacities assumed, exercised,
+            produced or reproduced in a published model,
+            historical case or proposed intervention.
+          </p>
+
+          <div class="lab-card-details">
+
+            <p>
+              <strong>Research focus:</strong>
+              Assumptions, capacity formation, control,
+              reproduction and evidence gaps.
+            </p>
+
+            <p>
+              <strong>Worked application:</strong>
+              Samir Amin (1987), A Note on the Concept
+              of Delinking.
+            </p>
+
+            <p>
+              <strong>Status:</strong>
+              Experimental research worksheet.
+            </p>
+
+            <a
+              class="lab-card-link"
+              href="../relinking-lab/capacity-audit/"
+            >
+              Open Model &amp; Capacity Audit →
+            </a>
+
+          </div>
+
+        </article>
+
+
+        <!-- INSTRUMENT: RELINKING SCENARIO -->
+
+        <article
+          class="lab-card"
+          data-type="scenario"
+          data-search="relinking scenario builder sabah palm oil machinery maintenance training supplier technical knowledge capacity transformation"
+        >
+
+          <span class="lab-card-type">
+            Scenario exploration
+          </span>
+
+          <h3>Relinking Scenario Builder</h3>
+
+          <p>
+            Explore how a proposed change in economic
+            relationships might enable particular functions
+            and capacities to develop.
+          </p>
+
+          <div class="lab-card-details">
+
+            <p>
+              <strong>Research focus:</strong>
+              Functions, knowledge access, control,
+              dependencies and continuity.
+            </p>
+
+            <p>
+              <strong>Illustrative application:</strong>
+              A hypothetical maintenance and training
+              arrangement involving a Sabah palm-oil processor.
+            </p>
+
+            <p>
+              <strong>Status:</strong>
+              Conceptual prototype; no empirical results.
+            </p>
+
+            <a
+              class="lab-card-link"
+              href="../relinking-lab/#scenario-builder"
+            >
+              Open Relinking Scenario Builder →
+            </a>
+
+          </div>
+
+        </article>
+
+      </div>
+
+      <div id="lab-empty" class="lab-empty" hidden>
+
+        <p>
+          No instruments match your search.
+          Try a different term or select all instruments.
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <hr class="lab-divider">
+
+
+  <!-- CONNECTIONS -->
+
+  <section class="lab-section">
+    <div class="container">
+
+      <div class="lab-section-heading">
+
+        <p class="lab-kicker">
+          02 / Connections
+        </p>
+
+        <h2>How the Lab connects to the Toolkit</h2>
+
+        <p>
+          Research instruments are linked to the publications,
+          methods and evidence that inform their development
+          and application.
+        </p>
+
+      </div>
+
+      <div class="lab-grid">
+
+        <article class="lab-card">
+
+          <span class="lab-card-type">
+            Methods Library
+          </span>
+
+          <h3>From theoretical models to research questions</h3>
+
+          <p>
+            The Model &amp; Capacity Audit uses Amin's 1987
+            article as a worked example, distinguishing what
+            the article specifies from further questions about
+            the capacities required for transformation.
+          </p>
+
+          <div class="lab-card-details">
+
+            <a
+              class="lab-card-link"
+              href="../methods/amin-1987/"
+            >
+              Explore Amin (1987) in the Methods Library →
+            </a>
+
+          </div>
+
+        </article>
+
+        <article class="lab-card">
+
+          <span class="lab-card-type">
+            Data Catalogue
+          </span>
+
+          <h3>From research questions to evidence</h3>
+
+          <p>
+            The instruments identify evidence that would
+            be required to investigate particular claims.
+            The Data Catalogue provides a separate route
+            to discovering and assessing available sources.
+          </p>
+
+          <div class="lab-card-details">
+
+            <a
+              class="lab-card-link"
+              href="../data/"
+            >
+              Explore the Data Catalogue →
+            </a>
+
+          </div>
+
+        </article>
+
+      </div>
+
+      <p class="lab-small">
+        These links indicate conceptual and research connections.
+        They do not imply that a dataset validates an instrument
+        or that a worked example establishes empirical outcomes.
+      </p>
+
+    </div>
+  </section>
+
+
+  <hr class="lab-divider">
+
+
+  <!-- DEVELOPMENT -->
+
+  <section class="lab-section">
+    <div class="container">
+
+      <div class="lab-section-heading">
+
+        <p class="lab-kicker">
+          03 / Development
+        </p>
+
+        <h2>An evolving research space</h2>
+
+        <p>
+          The Lab currently contains two experimental instruments.
+          Additional tools and applications can be developed
+          as research questions and evidence requirements
+          become clearer.
+        </p>
+
+        <p>
+          A research instrument, a worked application and an
+          empirical result are distinct contributions.
+          Future development will preserve those distinctions.
+        </p>
+
+        <p>
+          <a href="../contribute/">
+            Visit Contribute →
+          </a>
+        </p>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+
+<footer>
+  <div class="container">
+
+    <p>
+      Unequal Exchange Toolkit · Open research in development
+    </p>
+
+    <p>
+      <a href="../methods/">Methods</a> ·
+      <a href="../data/">Data catalogue</a> ·
+      <a href="../contribute/">Contribute</a>
+    </p>
+
+  </div>
+</footer>
+
+
+<!-- CATALOGUE SEARCH -->
+
+<script>
+  "use strict";
+
+  const searchInput = document.getElementById("lab-search");
+  const typeFilter = document.getElementById("lab-filter");
+  const cards = Array.from(
+    document.querySelectorAll("#lab-grid .lab-card")
+  );
+
+  const resultsCount = document.getElementById(
+    "lab-results-count"
+  );
+
+  const emptyMessage = document.getElementById("lab-empty");
+
+  function filterInstruments() {
+
+    const query = searchInput.value.trim().toLowerCase();
+    const selectedType = typeFilter.value;
+
+    let visibleCount = 0;
+
+    cards.forEach(function (card) {
+
+      const searchableText = (
+        card.textContent + " " + card.dataset.search
+      ).toLowerCase();
+
+      const matchesSearch =
+        query === "" || searchableText.includes(query);
+
+      const matchesType =
+        selectedType === "all" ||
+        card.dataset.type === selectedType;
+
+      const visible = matchesSearch && matchesType;
+
+      card.hidden = !visible;
+
+      if (visible) {
+        visibleCount += 1;
+      }
+
+    });
+
+    resultsCount.textContent =
+      "Showing " + visibleCount + " of " +
+      cards.length + " instruments";
+
+    emptyMessage.hidden = visibleCount !== 0;
+
+  }
+
+  searchInput.addEventListener("input", filterInstruments);
+  typeFilter.addEventListener("change", filterInstruments);
+
+  filterInstruments();
+</script>
+
+</body>
+</html>
