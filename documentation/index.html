@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Documentation and verification status of Unequal Exchange Toolkit research materials.">
+  <title>Documentation Dashboard | Unequal Exchange Toolkit</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    .dashboard { padding: 2rem 0 5rem; }
+    .dashboard-intro { max-width: 850px; }
+    .kicker { color:#9d302a; font-size:.78rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+    .note { background:#fffdf8; border-left:4px solid #9d302a; padding:20px 24px; margin:26px 0; }
+    .entries { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr)); gap:18px; margin:22px 0 36px; }
+    .entry { border:1px solid #cfc6b8; background:#fffdf8; padding:24px; min-width:0; }
+    .entry h3 { margin:8px 0 12px; }
+    .entry p { line-height:1.6; }
+    .entry a { overflow-wrap:anywhere; }
+    .status { display:inline-block; border:1px solid #9eb39a; background:#e6eee4; padding:5px 9px; font-size:.76rem; font-weight:700; }
+    .status-doc { background:#e6edf9; border-color:#9ab0d1; }
+    .status-tool { background:#eee6f5; border-color:#b9a5cc; }
+    .small { color:#645e56; font-size:.9rem; }
+    .dashboard section { margin-top:36px; }
+    .dashboard h2 { border-bottom:1px solid #cfc6b8; padding-bottom:10px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a class="brand" href="../index.html">UNEQUAL EXCHANGE TOOLKIT</a>
+      <nav aria-label="Main navigation">
+        <a href="../index.html">Home</a>
+        <a href="../methods/">Methods</a>
+        <a href="../data/">Data catalogue</a>
+        <a href="../transformation-lab/">Transformation Lab</a>
+        <a href="../contribute/">Contribute</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="container dashboard">
+    <div class="dashboard-intro">
+      <p class="kicker">Open research / Documentation</p>
+      <h1>Documentation Dashboard</h1>
+      <p class="lead">What the Toolkit documents, what has been independently tested, and what remains unresolved.</p>
+      <div class="note">
+        <strong>How to read this page</strong>
+        <p>Documentation is not replication. A documented method has been explained; a reconstructed analysis has been independently implemented to a stated extent. Neither status implies endorsement of the original study or verification of every result.</p>
+        <p>Research instruments are identified separately: they are tools for inquiry, not replications of published findings. Consult each entry for its evidence and limitations.</p>
+      </div>
+    </div>
+
+    <section aria-labelledby="methods-heading">
+      <h2 id="methods-heading">Methods Library</h2>
+      <div class="entries">
+        <article class="entry">
+          <span class="status">Partial statistical reconstruction</span>
+          <h3>Dorninger et al. (2021)</h3>
+          <p><strong>Documented:</strong> accounting approach, materials statistical model, sources, reconstruction procedure and limitations.</p>
+          <p><strong>Tested:</strong> corrected R implementation executed; global fit statistics closely agree with the published figure.</p>
+          <p><strong>Unresolved:</strong> exact coefficient-level replication and upstream input–output calculations.</p>
+          <p class="small">Last recorded audit: 17 September 2026.</p>
+          <p><a href="../methods/dorninger/">Read the research profile →</a></p>
+        </article>
+        <article class="entry">
+          <span class="status status-doc">Methodological documentation</span>
+          <h3>Amin (1987)</h3>
+          <p>Conceptual analysis of the delinking comparison and the capacities it assumes, exercises or may generate.</p>
+          <p><strong>Verification:</strong> no computational replication is claimed here. Consult the Methods Library for the profile and its documentation status.</p>
+          <p><a href="../methods/">Find the profile in the Methods Library →</a></p>
+        </article>
+      </div>
+      <p class="small">This is an initial overview of selected entries, not an automatically generated inventory of every catalogue record. Individual profiles remain the authoritative record of their own verification status.</p>
+    </section>
+
+    <section aria-labelledby="data-heading">
+      <h2 id="data-heading">Data Catalogue</h2>
+      <div class="entries">
+        <article class="entry">
+          <span class="status status-doc">Catalogue documentation</span>
+          <h3>Production Networks</h3>
+          <p>Explore documented research material on production networks. Inclusion in the catalogue does not establish independent verification of the underlying data or estimates.</p>
+          <p><a href="../data/">Browse the Data Catalogue →</a></p>
+        </article>
+        <article class="entry">
+          <span class="status status-doc">Catalogue documentation</span>
+          <h3>Data Sources</h3>
+          <p>Find sources and their accompanying documentation. Check each source for coverage, provenance, access conditions and limitations.</p>
+          <p><a href="../data/">Browse the Data Catalogue →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="lab-heading">
+      <h2 id="lab-heading">Transformation Lab</h2>
+      <div class="entries">
+        <article class="entry">
+          <span class="status status-tool">Research instrument</span>
+          <h3>Model &amp; Capacity Audit</h3>
+          <p>Interrogates capacities assumed, exercised and generated in accounts of economic transformation. An analytical instrument, not an independent verification of the models it examines.</p>
+          <p><a href="../transformation-lab/capacity-audit/">Open the audit →</a></p>
+        </article>
+        <article class="entry">
+          <span class="status status-tool">Research instrument</span>
+          <h3>Relinking Scenario Builder</h3>
+          <p>Explores how changing relationships might assemble and reproduce productive, technical and organisational capacities. Scenarios are exploratory, not empirical predictions.</p>
+          <p><a href="../transformation-lab/">Find the builder in the Transformation Lab →</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="release-heading">
+      <h2 id="release-heading">Version and changes</h2>
+      <p>This dashboard is being prepared for the Toolkit's <strong>v0.3</strong> release. Once published, the release notes and archived source snapshot will be available on <a href="https://github.com/unequal-exchange-toolkit/toolkit/releases">GitHub Releases</a>.</p>
+      <p class="small">The live website may change between formal releases. GitHub commits record individual changes; releases identify substantive milestones.</p>
+    </section>
+  </main>
+  <footer class="container" style="border-top:1px solid #cfc6b8;padding:28px 0 45px">
+    <p>Unequal Exchange Toolkit · Open research in development</p>
+    <p><a href="../index.html">Home</a> · <a href="../methods/">Methods</a> · <a href="../contribute/">Contribute</a></p>
+  </footer>
+</body>
+</html>
